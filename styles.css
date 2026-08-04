@@ -822,14 +822,16 @@ html[dir="ltr"] .ticker-items {
 .timeline-content p { font-size: 14px; color: var(--text-light); line-height: 1.7; }
 
 /* ---- Mission/Vision/Goals ---- */
-.mvg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.mvg-card { border-radius: var(--radius-lg); padding: 36px 28px; text-align: center; box-shadow: var(--shadow-sm); }
-.mvg-card.mission { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; }
+.mvg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.mvg-card { border-radius: var(--radius-lg); padding: 36px 28px; text-align: center; box-shadow: var(--shadow-sm); transition: var(--transition); }
+.mvg-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
 .mvg-card.vision { background: linear-gradient(135deg, var(--secondary-dark), var(--secondary)); color: #fff; }
-.mvg-card.values { background: var(--bg-light); }
+.mvg-card.mission { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: #fff; }
+.mvg-card.pharmd { background: linear-gradient(135deg, #0f5257, #0b6e4f); color: #fff; }
+.mvg-card.values { background: #ffffff; border: 1px solid var(--border); }
 .mvg-card i { font-size: 2.5rem; margin-bottom: 18px; }
 .mvg-card h3 { font-size: 1.2rem; font-weight: 900; margin-bottom: 14px; }
-.mvg-card p { font-size: 14px; line-height: 1.85; opacity: 0.9; }
+.mvg-card p { font-size: 14.5px; line-height: 1.85; opacity: 0.95; }
 .mvg-card.values h3 { color: var(--text-dark); }
 .mvg-card.values p { color: var(--text-body); opacity: 1; }
 .mvg-card.values i { color: var(--primary); }
