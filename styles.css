@@ -1,3 +1,5 @@
+@import url('pharma-cursor.css');
+
 /* ============================================================
    كلية الصيدلة - جامعة الأزهر - أسيوط
    Main Stylesheet — Multi-Page Edition
@@ -842,14 +844,16 @@ html[dir="ltr"] .ticker-items {
 .admin-card .admin-dept { font-size: 12px; color: var(--text-light); }
 
 /* ---- Dean's Message ---- */
-.dean-grid { display: grid; grid-template-columns: 280px 1fr; gap: 50px; align-items: start; }
-.dean-avatar { width: 100%; height: 310px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); display: flex; align-items: center; justify-content: center; font-size: 5rem; color: rgba(255,255,255,0.6); overflow: hidden; }
-.dean-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.3s ease; }
-.dean-avatar:hover img { transform: scale(1.03); }
-.dean-card-info { padding: 20px; }
-.dean-card-info h3 { font-size: 1.05rem; font-weight: 900; color: var(--text-dark); margin-bottom: 5px; }
+.dean-grid { display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start; }
+.dean-card { background: #fff; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); text-align: center; border: 1px solid var(--border); transition: var(--transition); }
+.dean-card:hover { box-shadow: var(--shadow-lg); border-color: var(--primary-light); }
+.dean-avatar { width: 100%; height: 320px; background: linear-gradient(135deg, var(--primary-dark), var(--primary)); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.dean-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top center; border-radius: var(--radius-lg) var(--radius-lg) 0 0; transition: transform 0.4s ease, filter 0.4s ease; }
+.dean-card:hover .dean-avatar img { transform: scale(1.04); }
+.dean-card-info { padding: 20px 16px; }
+.dean-card-info h3 { font-size: 1.1rem; font-weight: 900; color: var(--text-dark); margin-bottom: 5px; }
 .dean-card-info p { font-size: 13px; color: var(--primary); font-weight: 700; }
-.dean-message blockquote { position: relative; font-size: 15px; line-height: 2; color: var(--text-body); padding: 0 28px; border-right: 4px solid var(--secondary); margin: 0 0 20px; }
+.dean-message blockquote { position: relative; font-size: 15.5px; line-height: 2; color: var(--text-body); padding: 0 28px; border-right: 4px solid var(--secondary); margin: 0 0 24px; }
 .dean-message blockquote::before { content: '\201C'; position: absolute; top: -20px; right: 0; font-size: 6rem; color: var(--secondary); opacity: 0.15; font-family: Georgia, serif; line-height: 1; }
 
 /* ---- Accreditation ---- */
@@ -984,6 +988,16 @@ html[dir="ltr"] .ticker-items {
   .dept-full-header { flex-direction: column; gap: 16px; }
   .values-grid { grid-template-columns: 1fr; }
   .program-details-grid { grid-template-columns: 1fr; }
+  .dean-grid { grid-template-columns: 1fr; gap: 30px; }
+  .dean-card { max-width: 320px; margin: 0 auto; }
+  .dean-avatar { height: 320px; }
+  .dean-message blockquote { border-right: none; border-top: 4px solid var(--secondary); padding: 20px 10px 0; margin-bottom: 20px; text-align: center; }
+  .dean-message blockquote::before { right: 50%; transform: translateX(50%); top: -30px; }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .dean-grid { grid-template-columns: 240px 1fr; gap: 24px; }
+  .dean-avatar { height: 280px; }
 }
 
 @media (max-width: 480px) {

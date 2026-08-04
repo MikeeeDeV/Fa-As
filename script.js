@@ -5,6 +5,16 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+  // ---- Pharma Capsule Cursor Loader ----
+  (function loadPharmaCursor() {
+    if (!document.getElementById('pharma-cursor-script')) {
+      const pcs = document.createElement('script');
+      pcs.id = 'pharma-cursor-script';
+      pcs.src = 'pharma-cursor.js';
+      document.head.appendChild(pcs);
+    }
+  })();
+
   // ---- Google Translate Instant Switcher ----
   window.googleTranslateElementInit = function () {
     if (window.google && window.google.translate) {
