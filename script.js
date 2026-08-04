@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
   document.querySelectorAll(
-    '.dept-card, .news-card, .event-card, .service-card, .stat-card, .gallery-item, ' +
+    '.dept-card, .news-card, .news-full-card, .event-card, .service-card, .stat-card, .gallery-item, ' +
     '.feature-item, .contact-card, .faculty-card, .research-center-card, .mvg-card, ' +
     '.admin-card, .community-card, .portal-card, .qsi-card, .accred-card, .pub-item, ' +
     '.value-item, .dept-full-card, .program-card'
@@ -419,7 +419,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // ---- Faculty Filter Tabs ----
+  // ---- Filter Tabs (Faculty & News) ----
   const filterTabs = document.querySelectorAll('.filter-tab');
   if (filterTabs.length) {
     filterTabs.forEach(function (tab) {
@@ -427,6 +427,8 @@ document.addEventListener('DOMContentLoaded', function () {
         filterTabs.forEach(t => t.classList.remove('active'));
         this.classList.add('active');
         const filter = this.dataset.filter;
+
+        // Faculty page cards
         document.querySelectorAll('.faculty-card').forEach(function (card) {
           if (filter === 'all' || card.dataset.dept === filter) {
             card.style.display = '';
@@ -437,8 +439,54 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(() => { card.style.display = 'none'; }, 300);
           }
         });
+
+        // News page cards
+        document.querySelectorAll('.news-full-card').forEach(function (card) {
+          const cat = card.dataset.category || '';
+          if (filter === 'all' || cat.includes(filter)) {
+            card.style.display = '';
+            card.classList.remove('hidden');
+            setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 50);
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => { card.style.display = 'none'; card.classList.add('hidden'); }, 300);
+          }
+        });
       });
     });
+  }
+
+  // ---- News Live Keyword Search ----
+  const newsSearchInput = document.getElementById('newsSearchInput');
+  const newsSearchClear = document.getElementById('newsSearchClear');
+  if (newsSearchInput) {
+    newsSearchInput.addEventListener('input', function () {
+      const val = this.value.trim().toLowerCase();
+      if (newsSearchClear) {
+        newsSearchClear.style.display = val ? 'inline-block' : 'none';
+      }
+      document.querySelectorAll('.news-full-card').forEach(function (card) {
+        const text = card.textContent.toLowerCase();
+        if (!val || text.includes(val)) {
+          card.style.display = '';
+          card.classList.remove('hidden');
+          setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 50);
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          setTimeout(() => { card.style.display = 'none'; card.classList.add('hidden'); }, 300);
+        }
+      });
+    });
+
+    if (newsSearchClear) {
+      newsSearchClear.addEventListener('click', function () {
+        newsSearchInput.value = '';
+        newsSearchClear.style.display = 'none';
+        newsSearchInput.dispatchEvent(new Event('input'));
+      });
+    }
   }
 
   // ---- Facebook Tab switcher (news page) ----
