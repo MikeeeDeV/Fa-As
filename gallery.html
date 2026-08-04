@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>معرض الصور والفيديو | كلية الصيدلة - جامعة الأزهر - أسيوط</title>
+  <meta name="description" content="معرض صور وفيديوهات كلية الصيدلة بجامعة الأزهر أسيوط - أنشطة، فعاليات، مختبرات، وذكريات الطلاب من صفحة الفيسبوك الرسمية." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pharmacy.azhar.edu.eg/gallery.html" />
+  <meta property="og:title" content="معرض الصور | كلية الصيدلة - جامعة الأزهر - أسيوط" />
+  <meta property="og:description" content="معرض صور وفيديوهات كلية الصيدلة - أنشطة وفعاليات من صفحة الفيسبوك الرسمية" />
+  <meta property="og:image" content="https://pharmacy.azhar.edu.eg/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="ar_EG" />
+  <meta property="og:site_name" content="كلية الصيدلة - جامعة الأزهر - أسيوط" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://pharmacy.azhar.edu.eg/og-image.png" />
+  <link rel="canonical" href="https://pharmacy.azhar.edu.eg/gallery.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .gallery-full-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+    .gallery-full-item { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 1; cursor: pointer; }
+    .gallery-full-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .gallery-full-item:hover img { transform: scale(1.07); }
+    .gallery-full-item .gfi-overlay { position: absolute; inset: 0; background: rgba(26,107,60,0.7); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; transition: var(--transition); gap: 6px; color: #fff; }
+    .gallery-full-item:hover .gfi-overlay { opacity: 1; }
+    .gallery-full-item .gfi-overlay i { font-size: 2rem; }
+    .gallery-full-item .gfi-overlay span { font-size: 13px; font-weight: 700; }
+    .gallery-full-grid .span2 { grid-column: span 2; aspect-ratio: 2; }
+    .gallery-full-grid .span2-r { grid-row: span 2; aspect-ratio: auto; }
+    @media (max-width: 768px) { .gallery-full-grid { grid-template-columns: repeat(2, 1fr); } .gallery-full-grid .span2, .gallery-full-grid .span2-r { grid-column: auto; grid-row: auto; aspect-ratio: 1; } }
+    @media (max-width: 480px) { .gallery-full-grid { grid-template-columns: 1fr; } }
+    .fb-albums-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px; }
+    .fb-album-card { background: #fff; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); display: block; text-align: center; }
+    .fb-album-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .fb-album-thumb { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: rgba(255,255,255,0.7); position: relative; }
+    .fb-album-thumb .album-count { position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); color: #fff; padding: 3px 10px; border-radius: 15px; font-size: 12px; font-weight: 700; }
+    .fb-album-info { padding: 16px; }
+    .fb-album-info h4 { font-size: 14px; font-weight: 800; color: var(--text-dark); margin-bottom: 5px; }
+    .fb-album-info p { font-size: 12px; color: var(--text-light); }
+    @media (max-width: 640px) { .fb-albums-grid { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <div class="topbar-right">
+        <i class="fas fa-phone-alt"></i><span>088 - 2366068</span>
+        <span class="divider-v"></span>
+        <i class="fas fa-envelope"></i><span>info@pharmacy.azhar.edu.eg</span>
+      </div>
+      <div class="topbar-left">
+        <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-x-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        <div class="lang-switch"><a href="#" class="active">عربي</a><span>|</span><a href="#">English</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="header" class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="logos-area">
+        <a href="index.html"><img src="pharma-as logo.png" alt="كلية الصيدلة - أسيوط" class="logo logo-pharmacy" /></a>
+        <div class="site-title-area">
+          <div class="site-name">كلية الصيدلة</div>
+          <p class="site-subtitle">جامعة الأزهر &mdash; أسيوط</p>
+          <p class="site-subtitle-en">Faculty of Pharmacy &mdash; Al-Azhar University &mdash; Assiut</p>
+        </div>
+        <a href="index.html"><img src="al-azhar-university-seeklogo.png" alt="جامعة الأزهر" class="logo logo-azhar" /></a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="قائمة"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="main-nav" id="mainNav">
+    <div class="container">
+      <ul class="nav-menu">
+        <li class="nav-item" data-page="index"><a href="index.html">الرئيسية</a></li>
+        <li class="nav-item has-dropdown" data-page="about"><a href="about.html">الكلية <i class="fas fa-angle-down"></i></a>
+          <ul class="dropdown">
+            <li><a href="about.html#dean"><i class="fas fa-quote-right"></i> كلمة العميد</a></li>
+            <li><a href="about.html"><i class="fas fa-university"></i> عن الكلية</a></li>
+            <li><a href="about.html#administration"><i class="fas fa-user-tie"></i> عمادة الكلية</a></li>
+            <li><a href="about.html#agencies"><i class="fas fa-users"></i> وكالات الكلية</a></li>
+            <li><a href="about.html#management"><i class="fas fa-building"></i> إدارة الكلية</a></li>
+            <li><a href="community.html"><i class="fas fa-handshake"></i> الشراكة المجتمعية</a></li>
+            <li><a href="about.html#councils"><i class="fas fa-gavel"></i> مجالس الكلية</a></li>
+          </ul>
+        </li>
+        <li class="nav-item" data-page="departments"><a href="departments.html">أقسام الكلية</a></li>
+        <li class="nav-item has-dropdown" data-page="academic-programs"><a href="academic-programs.html">البرامج الأكاديمية <i class="fas fa-angle-down"></i></a>
+          <ul class="dropdown">
+            <li><a href="academic-programs.html#bachelor"><i class="fas fa-graduation-cap"></i> بكالوريوس الصيدلة</a></li>
+            <li><a href="academic-programs.html#postgrad"><i class="fas fa-flask"></i> برامج الدراسات العليا</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown" data-page="research"><a href="research.html">البحث العلمي <i class="fas fa-angle-down"></i></a>
+          <ul class="dropdown">
+            <li><a href="research.html#lab"><i class="fas fa-microscope"></i> المختبر المركزي</a></li>
+            <li><a href="research.html#interests"><i class="fas fa-lightbulb"></i> الاهتمامات البحثية</a></li>
+            <li><a href="research.html#entities"><i class="fas fa-atom"></i> الكيانات البحثية</a></li>
+            <li><a href="research.html#training"><i class="fas fa-chalkboard-teacher"></i> التدريب البحثي</a></li>
+          </ul>
+        </li>
+        <li class="nav-item" data-page="community"><a href="community.html">خدمة المجتمع</a></li>
+        <li class="nav-item has-dropdown" data-page="students"><a href="students.html">الطلاب <i class="fas fa-angle-down"></i></a>
+          <ul class="dropdown">
+            <li><a href="students.html#future"><i class="fas fa-user-graduate"></i> طلبة المستقبل</a></li>
+            <li><a href="students.html#current"><i class="fas fa-users"></i> الطلبة الحاليين</a></li>
+            <li><a href="students.html#schedules"><i class="fas fa-calendar-alt"></i> الجداول الدراسية</a></li>
+          </ul>
+        </li>
+        <li class="nav-item" data-page="faculty"><a href="faculty.html">الهيئة التدريسية</a></li>
+        <li class="nav-item" data-page="news"><a href="news.html">الأخبار والفعاليات</a></li>
+        <li class="nav-item" data-page="contact"><a href="contact.html">اتصل بنا</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero-circle hero-circle-1"></div>
+  <div class="hero-circle hero-circle-2"></div>
+  <div class="container">
+    <div class="page-hero-content">
+      <nav class="breadcrumb">
+        <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
+        <span class="sep"><i class="fas fa-angle-left"></i></span>
+        <span class="current">معرض الصور والفيديو</span>
+      </nav>
+      <h1>معرض الصور والفيديو</h1>
+      <p class="hero-lead">لحظات مميزة من حياة كلية الصيدلة - أنشطة طلابية، فعاليات أكاديمية، مختبرات، وذكريات لا تُنسى. تابع صفحتنا على فيسبوك لأحدث الصور.</p>
+      <div class="page-hero-meta">
+        <span><i class="fas fa-images"></i> مئات الصور</span>
+        <span><i class="fab fa-facebook-f"></i> صفحة الفيسبوك الرسمية</span>
+        <span><i class="fas fa-video"></i> فيديوهات الأنشطة</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY GRID -->
+<section class="section" style="background:#f8f9fa;">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge"><i class="fas fa-camera"></i> صورنا</span>
+      <h2 class="section-title">أحدث الصور</h2>
+      <div class="title-line"><span></span></div>
+    </div>
+    <div class="gallery-full-grid">
+      <div class="gallery-full-item span2">
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80" alt="مختبرات كلية الصيدلة" loading="lazy" />
+        <div class="gfi-overlay"><i class="fas fa-search-plus"></i><span>مختبرات الكلية</span></div>
+      </div>
+      <div class="gallery-full-item span2-r" style="grid-row:span 2;">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&q=80" alt="أنشطة طلابية" loading="lazy" style="height:100%;object-fit:cover;" />
+        <div class="gfi-overlay"><i class="fas fa-search-plus"></i><span>أنشطة طلابية</span></div>
+      </div>
+      <div class="gallery-full-item">
+        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&q=80" alt="مختبر الكيمياء" loading="lazy" />
+        <div class="gfi-overlay"><i class="fas fa-search-plus"></i><span>مختبر الكيمياء</span></div>
+      </div>
+      <div class="gallery-full-item">
+        <img src="https://images.unsplash.com/photo-1582560475093-ba66accbc424?w=400&q=80" alt="طلاب الكلية" loading="lazy" />
+        <div class="gfi-overlay"><i class="fas fa-search-plus"></i><span>طلاب الكلية</span></div>
+      </div>
+      <div class="gallery-full-item">
+        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&q=80" alt="مرافق الكلية" loading="lazy" />
+        <div class="gfi-overlay"><i class="fas fa-search-plus"></i><span>مرافق الكلية</span></div>
+      </div>
+      <div class="gallery-full-item">
+        <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400&q=80" alt="مختبر الأبحاث" loading="lazy" />
+        <div class="gfi-overlay"><i class="fas fa-search-plus"></i><span>مختبر الأبحاث</span></div>
+      </div>
+      <div class="gallery-full-item">
+        <img src="https://images.unsplash.com/photo-1530973428-5bf2db2e4d71?w=400&q=80" alt="أعضاء هيئة التدريس" loading="lazy" />
+        <div class="gfi-overlay"><i class="fas fa-search-plus"></i><span>هيئة التدريس</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACEBOOK ALBUMS (deep integration) -->
+<section class="section" style="background:#fff;">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge fb-badge"><i class="fab fa-facebook-f"></i> ألبومات فيسبوك</span>
+      <h2 class="section-title">ألبومات الصور على فيسبوك</h2>
+      <div class="title-line"><span></span></div>
+      <p class="section-desc">تصفّح ألبوماتنا على الفيسبوك للاطلاع على جميع صور وفيديوهات الكلية</p>
+    </div>
+    <div class="fb-albums-grid">
+      <a href="https://www.facebook.com/pharmacyazharboysassuit/photos" target="_blank" rel="noopener" class="fb-album-card">
+        <div class="fb-album-thumb" style="background:linear-gradient(135deg,#1877f2,#0d5bc4);">
+          <i class="fas fa-images"></i>
+          <span class="album-count">كل الصور</span>
+        </div>
+        <div class="fb-album-info"><h4>جميع صور الكلية</h4><p>تصفّح كل الصور المنشورة</p></div>
+      </a>
+      <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="fb-album-card">
+        <div class="fb-album-thumb" style="background:linear-gradient(135deg,#1a6b3c,#2a8a52);">
+          <i class="fas fa-graduation-cap"></i>
+          <span class="album-count">الفعاليات</span>
+        </div>
+        <div class="fb-album-info"><h4>حفلات التخرج والتكريم</h4><p>صور حفلات التخرج والمتفوقين</p></div>
+      </a>
+      <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="fb-album-card">
+        <div class="fb-album-thumb" style="background:linear-gradient(135deg,#d4a017,#b8850f);">
+          <i class="fas fa-flask"></i>
+          <span class="album-count">المختبرات</span>
+        </div>
+        <div class="fb-album-info"><h4>مختبرات ومرافق الكلية</h4><p>صور الإمكانيات والتجهيزات</p></div>
+      </a>
+      <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="fb-album-card">
+        <div class="fb-album-thumb" style="background:linear-gradient(135deg,#8a2be2,#6a1eb0);">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <span class="album-count">فعاليات</span>
+        </div>
+        <div class="fb-album-info"><h4>الملتقيات والمؤتمرات</h4><p>فعاليات علمية وأكاديمية</p></div>
+      </a>
+      <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="fb-album-card">
+        <div class="fb-album-thumb" style="background:linear-gradient(135deg,#0066b2,#004a8f);">
+          <i class="fas fa-bus"></i>
+          <span class="album-count">رحلات</span>
+        </div>
+        <div class="fb-album-info"><h4>الرحلات العلمية</h4><p>زيارات ومصانع وبيئة خارجية</p></div>
+      </a>
+      <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="fb-album-card">
+        <div class="fb-album-thumb" style="background:linear-gradient(135deg,#d44000,#a83000);">
+          <i class="fas fa-handshake"></i>
+          <span class="album-count">مجتمعية</span>
+        </div>
+        <div class="fb-album-info"><h4>أنشطة خدمة المجتمع</h4><p>قوافل طبية وحملات توعية</p></div>
+      </a>
+    </div>
+    <div class="text-center">
+      <a href="https://www.facebook.com/pharmacyazharboysassuit/photos" target="_blank" rel="noopener" class="btn btn-facebook">
+        <i class="fab fa-facebook-f"></i> تصفّح كل الصور على فيسبوك
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FACEBOOK DEEP LIVE FEED -->
+<section class="fb-deep-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge fb-badge"><i class="fab fa-facebook-f"></i> مباشر</span>
+      <h2 class="section-title">آخر منشوراتنا على فيسبوك</h2>
+      <div class="title-line"><span></span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start;" id="fb-gallery-grid">
+      <div>
+        <div class="fb-embed-container" style="padding:0;min-height:600px;">
+          <div class="fb-page"
+               data-href="https://www.facebook.com/pharmacyazharboysassuit"
+               data-tabs="timeline"
+               data-width=""
+               data-height="650"
+               data-small-header="true"
+               data-adapt-container-width="true"
+               data-hide-cover="false"
+               data-show-facepile="false">
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="background:#fff;border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow-md);margin-bottom:20px;">
+          <h3 style="font-size:1.1rem;font-weight:900;color:var(--primary);margin-bottom:16px;"><i class="fab fa-facebook-f"></i> تفاعل معنا</h3>
+          <p style="font-size:14px;color:var(--text-light);margin-bottom:18px;line-height:1.7;">أعجبك ما تشوفه؟ أعجب بصفحة الكلية وشاركها مع أصدقائك!</p>
+          <div class="fb-like"
+               data-href="https://www.facebook.com/pharmacyazharboysassuit"
+               data-width="" data-layout="standard"
+               data-action="like" data-size="large" data-share="true">
+          </div>
+        </div>
+        <div style="background:#fff;border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow-md);margin-bottom:20px;">
+          <h3 style="font-size:1rem;font-weight:900;color:var(--primary);margin-bottom:14px;"><i class="fas fa-share-alt"></i> شارك الصفحة</h3>
+          <div class="fb-share-button" data-href="https://www.facebook.com/pharmacyazharboysassuit" data-layout="button" data-size="large"></div>
+        </div>
+        <div style="background:linear-gradient(135deg,#1877f2,#0d5bc4);border-radius:var(--radius-lg);padding:28px;color:#fff;text-align:center;">
+          <i class="fab fa-facebook-f" style="font-size:3rem;margin-bottom:16px;display:block;opacity:0.9;"></i>
+          <h3 style="font-size:1.2rem;font-weight:900;margin-bottom:10px;">صفحة الفيسبوك الرسمية</h3>
+          <p style="font-size:13px;opacity:0.85;margin-bottom:20px;line-height:1.7;">تابع صفحتنا الرسمية على فيسبوك للاطلاع على أحدث الصور والفيديوهات والإعلانات يومياً.</p>
+          <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="btn" style="background:#fff;color:#1877f2;width:100%;justify-content:center;">
+            <i class="fab fa-facebook-f"></i> زيارة الصفحة الآن
+          </a>
+        </div>
+      </div>
+    </div>
+    <style>@media(max-width:768px){#fb-gallery-grid{grid-template-columns:1fr !important;}}</style>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <img src="pharma-as logo.png" alt="كلية الصيدلة" class="footer-logo" />
+            <div><h3>كلية الصيدلة</h3><p>جامعة الأزهر - أسيوط</p></div>
+          </div>
+          <p class="footer-desc">نسعى إلى تخريج كوادر صيدلانية متميزة وإجراء أبحاث علمية رائدة تخدم المجتمع.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-x-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">روابط سريعة</h4>
+          <ul class="footer-links">
+            <li><a href="about.html"><i class="fas fa-angle-left"></i> عن الكلية</a></li>
+            <li><a href="departments.html"><i class="fas fa-angle-left"></i> الأقسام</a></li>
+            <li><a href="faculty.html"><i class="fas fa-angle-left"></i> الهيئة التدريسية</a></li>
+            <li><a href="research.html"><i class="fas fa-angle-left"></i> البحث العلمي</a></li>
+            <li><a href="students.html"><i class="fas fa-angle-left"></i> خدمات الطلاب</a></li>
+            <li><a href="news.html"><i class="fas fa-angle-left"></i> الأخبار والفعاليات</a></li>
+            <li><a href="contact.html"><i class="fas fa-angle-left"></i> اتصل بنا</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">الأقسام العلمية</h4>
+          <ul class="footer-links">
+            <li><a href="departments.html#pharmaceutical-chemistry"><i class="fas fa-angle-left"></i> الكيمياء الصيدلية</a></li>
+            <li><a href="departments.html#pharmaceutics"><i class="fas fa-angle-left"></i> الصيدلانيات</a></li>
+            <li><a href="departments.html#pharmacognosy"><i class="fas fa-angle-left"></i> العقاقير والنباتات</a></li>
+            <li><a href="departments.html#microbiology"><i class="fas fa-angle-left"></i> الميكروبيولوجيا</a></li>
+            <li><a href="departments.html#biochemistry"><i class="fas fa-angle-left"></i> الكيمياء الحيوية</a></li>
+            <li><a href="departments.html#clinical-pharmacy"><i class="fas fa-angle-left"></i> الصيدلة الإكلينيكية</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">تابعنا على فيسبوك</h4>
+          <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="fb-page-link">
+            <div class="fb-preview">
+              <div class="fb-preview-header"><i class="fab fa-facebook-f"></i><div><strong>كلية الصيدلة - الأزهر - أسيوط</strong><small>pharmacyazharboysassuit</small></div></div>
+              <div class="fb-preview-body"><p>تابع آخر أخبار الكلية وفعالياتها</p><span class="fb-btn"><i class="fab fa-facebook-f"></i> تابع الصفحة</span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <p>جميع الحقوق محفوظة &copy; 2026 كلية الصيدلة - جامعة الأزهر - أسيوط</p>
+        <div class="footer-bottom-links"><a href="#">سياسة الخصوصية</a><a href="#">شروط الاستخدام</a><a href="sitemap.xml">خريطة الموقع</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v19.0"></script>
+<script src="script.js"></script>
+</body>
+</html>
