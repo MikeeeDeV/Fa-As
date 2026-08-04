@@ -5,7 +5,87 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  // ---- Active Nav based on current page ----
+  // ---- Preloader ----
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        preloader.classList.add('hide');
+      }, 200);
+    });
+    setTimeout(function () {
+      if (preloader && !preloader.classList.contains('hide')) {
+        preloader.classList.add('hide');
+      }
+    }, 1200);
+  }
+
+  // ---- Live Search Modal ----
+  const searchTriggers = document.querySelectorAll('.search-btn-trigger');
+  const searchOverlay = document.getElementById('searchModal');
+  const searchClose = document.getElementById('searchClose');
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+
+  const sitePages = [
+    { title: 'الصفحة الرئيسية', desc: 'كلية الصيدلة جامعة الأزهر أسيوط', url: 'index.html' },
+    { title: 'عن الكلية وكلمة العميد', desc: 'تاريخ الكلية، الرؤية، والرسالة والاعتماد', url: 'about.html' },
+    { title: 'الكيمياء الصيدلية والتحليلية', desc: 'الأقسام الأكاديمية - الكيمياء', url: 'departments.html#pharmaceutical-chemistry' },
+    { title: 'قسم الصيدلانيات', desc: 'الأقسام الأكاديمية - الصيدلانيات', url: 'departments.html#pharmaceutics' },
+    { title: 'قسم العقاقير للنباتات الطبية', desc: 'الأقسام الأكاديمية - العقاقير', url: 'departments.html#pharmacognosy' },
+    { title: 'قسم الميكروبيولوجيا والمناعة', desc: 'الأقسام الأكاديمية - الميكروبيولوجيا', url: 'departments.html#microbiology' },
+    { title: 'قسم الكيمياء الحيوية', desc: 'الأقسام الأكاديمية - الكيمياء الحيوية', url: 'departments.html#biochemistry' },
+    { title: 'قسم الصيدلة الإكلينيكية', desc: 'الأقسام الأكاديمية - الرعاية الصيدلية', url: 'departments.html#clinical-pharmacy' },
+    { title: 'برنامج بكالوريوس الصيدلة PharmD', desc: 'البرامج الأكاديمية واللائحة', url: 'academic-programs.html#bachelor' },
+    { title: 'برامج الدراسات العليا (ماجستير ودكتوراه)', desc: 'الدراسات العليا والبحوث', url: 'academic-programs.html#postgrad' },
+    { title: 'البحث العلمي والمختبر المركزي', desc: 'المعامل المركزية والنشر العلمي', url: 'research.html' },
+    { title: 'الهيئة التدريسية', desc: 'دليل السادة أعضاء هيئة التدريس', url: 'faculty.html' },
+    { title: 'بوابة الطلاب والجداول', desc: 'الجداول الدراسية، والنتائج، والتدريب الصيفي', url: 'students.html' },
+    { title: 'الأخبار ومنشورات فيسبوك', desc: 'آخر المنشورات والفعاليات من فيسبوك', url: 'news.html' },
+    { title: 'معرض الصور والفيديو', desc: 'ألبومات صور الكلية على فيسبوك', url: 'gallery.html' },
+    { title: 'اتصل بنا والعنوان', desc: 'خريطة الكلية ورقم الهاتف والبريد', url: 'contact.html' }
+  ];
+
+  if (searchOverlay) {
+    searchTriggers.forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        searchOverlay.classList.add('active');
+        if (searchInput) searchInput.focus();
+      });
+    });
+
+    if (searchClose) {
+      searchClose.addEventListener('click', function () {
+        searchOverlay.classList.remove('active');
+      });
+    }
+
+    searchOverlay.addEventListener('click', function (e) {
+      if (e.target === searchOverlay) searchOverlay.classList.remove('active');
+    });
+
+    if (searchInput && searchResults) {
+      searchInput.addEventListener('input', function () {
+        const query = this.value.trim().toLowerCase();
+        searchResults.innerHTML = '';
+        if (!query) return;
+
+        const filtered = sitePages.filter(p => p.title.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query));
+        if (filtered.length === 0) {
+          searchResults.innerHTML = '<p style="text-align:center;color:var(--text-light);font-size:13px;padding:10px;">لا توجد نتائج تطابق بحثك</p>';
+        } else {
+          filtered.forEach(p => {
+            const item = document.createElement('a');
+            item.href = p.url;
+            item.className = 'search-result-item';
+            item.innerHTML = `<div><h5>${p.title}</h5><p>${p.desc}</p></div><i class="fas fa-arrow-left" style="color:var(--primary)"></i>`;
+            searchResults.appendChild(item);
+          });
+        }
+      });
+    }
+  }
   (function setActiveNav() {
     const path = window.location.pathname;
     const page = path.split('/').pop().replace('.html', '') || 'index';

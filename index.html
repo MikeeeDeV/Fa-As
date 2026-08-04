@@ -11,14 +11,14 @@
   <meta name="keywords" content="كلية الصيدلة, جامعة الأزهر, أسيوط, صيدلة, pharmacy, azhar, assiut, دراسات عليا, بكالوريوس صيدلة" />
   <meta name="author" content="كلية الصيدلة - جامعة الأزهر أسيوط" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://pharmacy.azhar.edu.eg/index.html" />
+  <link rel="canonical" href="https://pharma-as-azedueg.vercel.app/index.html" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://pharmacy.azhar.edu.eg/" />
+  <meta property="og:url" content="https://pharma-as-azedueg.vercel.app/" />
   <meta property="og:title" content="كلية الصيدلة - جامعة الأزهر - أسيوط" />
   <meta property="og:description" content="الموقع الرسمي لكلية الصيدلة بجامعة الأزهر فرع أسيوط - تعليم صيدلي متميز، بحث علمي رائد، وخدمة مجتمعية منذ عام 1978م." />
-  <meta property="og:image" content="https://pharmacy.azhar.edu.eg/og-image.png" />
+  <meta property="og:image" content="https://pharma-as-azedueg.vercel.app/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="كلية الصيدلة - جامعة الأزهر - أسيوط" />
@@ -29,7 +29,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="كلية الصيدلة - جامعة الأزهر - أسيوط" />
   <meta name="twitter:description" content="الموقع الرسمي لكلية الصيدلة بجامعة الأزهر فرع أسيوط" />
-  <meta name="twitter:image" content="https://pharmacy.azhar.edu.eg/og-image.png" />
+  <meta name="twitter:image" content="https://pharma-as-azedueg.vercel.app/og-image.png" />
 
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -38,9 +38,9 @@
     "@type": "EducationalOrganization",
     "name": "كلية الصيدلة - جامعة الأزهر - أسيوط",
     "alternateName": "Faculty of Pharmacy - Al-Azhar University - Assiut",
-    "url": "https://pharmacy.azhar.edu.eg",
-    "logo": "https://pharmacy.azhar.edu.eg/pharma-as%20logo.png",
-    "image": "https://pharmacy.azhar.edu.eg/og-image.png",
+    "url": "https://pharma-as-azedueg.vercel.app",
+    "logo": "https://pharma-as-azedueg.vercel.app/pharma-as%20logo.png",
+    "image": "https://pharma-as-azedueg.vercel.app/og-image.png",
     "description": "كلية الصيدلة بجامعة الأزهر فرع أسيوط - تأسست عام 1978م",
     "foundingDate": "1978",
     "address": {
@@ -52,15 +52,7 @@
     "telephone": "+20882366068",
     "email": "info@pharmacy.azhar.edu.eg",
     "sameAs": ["https://www.facebook.com/pharmacyazharboysassuit"],
-    "numberOfStudents": 850,
-    "department": [
-      {"@type": "Organization", "name": "الكيمياء الصيدلية والتحليلية"},
-      {"@type": "Organization", "name": "الصيدلانيات"},
-      {"@type": "Organization", "name": "العقاقير والنباتات الطبية"},
-      {"@type": "Organization", "name": "الميكروبيولوجيا والمناعة"},
-      {"@type": "Organization", "name": "الكيمياء الحيوية الإكلينيكية"},
-      {"@type": "Organization", "name": "الصيدلة الإكلينيكية"}
-    ]
+    "numberOfStudents": 850
   }
   </script>
 
@@ -72,6 +64,15 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+<!-- Preloader -->
+<div id="preloader">
+  <div class="spinner-box">
+    <div class="configure-border-1"><div class="configure-core"></div></div>
+    <div class="configure-border-2"><div class="configure-core"></div></div>
+    <div class="preloader-text">كلية الصيدلة - جامعة الأزهر أسيوط</div>
+  </div>
+</div>
 
 <!-- TOP BAR -->
 <div class="topbar">
@@ -85,6 +86,7 @@
         <span>info@pharmacy.azhar.edu.eg</span>
       </div>
       <div class="topbar-left">
+        <button class="search-btn-trigger" aria-label="البحث في الموقع" title="البحث السريع"><i class="fas fa-search"></i></button>
         <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="social-link"><i class="fab fa-facebook-f"></i></a>
         <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
         <a href="#" class="social-link"><i class="fab fa-x-twitter"></i></a>
@@ -93,6 +95,23 @@
           <a href="#" class="active">عربي</a>
           <span>|</span>
           <a href="#">English</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER NEWS BAR -->
+<div class="news-ticker-bar">
+  <div class="container">
+    <div class="ticker-wrapper">
+      <span class="ticker-title"><i class="fas fa-bullhorn"></i> آخر الأخبار:</span>
+      <div class="ticker-content">
+        <div class="ticker-items">
+          <span class="ticker-item"><i class="fas fa-star"></i> تكريم المتميزين وإشادة قيادات جامعة الأزهر بخريجي كلية الصيدلة بأسيوط <a href="news.html">التفاصيل</a></span>
+          <span class="ticker-item"><i class="fas fa-ambulance"></i> انطلاق القافلة الطبية والصيدلانية الشاملة لمراكز محافظة أسيوط <a href="news.html">التفاصيل</a></span>
+          <span class="ticker-item"><i class="fas fa-microscope"></i> نشر أبحاث متقدمة في مجلات دولية مصنفة Q1 لأعضاء هيئة التدريس <a href="news.html">التفاصيل</a></span>
+          <span class="ticker-item"><i class="fas fa-calendar-check"></i> فتح باب التسجيل وتحديد مواعيد الاختبارات للطلاب المستجدين <a href="students.html">التفاصيل</a></span>
         </div>
       </div>
     </div>
@@ -178,7 +197,7 @@
           <p class="hero-desc">نُخرِّج قادة في مهنة الصيدلة من خلال تعليم عالي الجودة والبحث العلمي المتميز منذ عام 1978م</p>
           <div class="hero-buttons">
             <a href="about.html" class="btn btn-primary">اعرف أكثر</a>
-            <a href="news.html" class="btn btn-outline">آخر الأخبار</a>
+            <a href="news.html" class="btn btn-outline">آخر الأخبار والمنشورات</a>
           </div>
         </div>
       </div>
@@ -342,56 +361,56 @@
       <div class="news-col">
         <div class="section-header align-right">
           <span class="section-badge">آخر المستجدات</span>
-          <h2 class="section-title">أخبار الكلية</h2>
+          <h2 class="section-title">أخبار وإنجازات الكلية</h2>
           <div class="title-line"><span></span></div>
         </div>
         <div class="news-list">
           <article class="news-card">
             <div class="news-img-wrap">
               <div style="width:130px;height:120px;background:linear-gradient(135deg,#1a6b3c,#2a8a52);display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:rgba(255,255,255,0.7);">
-                <i class="fas fa-graduation-cap"></i>
+                <i class="fas fa-trophy"></i>
               </div>
-              <span class="news-cat">إعلانات</span>
+              <span class="news-cat">إنجازات</span>
             </div>
             <div class="news-body">
-              <span class="news-date"><i class="fas fa-calendar-alt"></i> يوليو 2026</span>
-              <h3><a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener">إعلان هام للطلاب المستجدين للعام الجامعي الجديد 2026-2027</a></h3>
-              <p>تعلن كلية الصيدلة جامعة الأزهر أسيوط عن بدء التسجيل وتدعو الطلاب للاطلاع على شروط القبول.</p>
-              <a href="news.html" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-            </div>
-          </article>
-          <article class="news-card">
-            <div class="news-img-wrap">
-              <div style="width:130px;height:120px;background:linear-gradient(135deg,#d4a017,#b8850f);display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:rgba(255,255,255,0.8);">
-                <i class="fas fa-award"></i>
-              </div>
-              <span class="news-cat">فعاليات</span>
-            </div>
-            <div class="news-body">
-              <span class="news-date"><i class="fas fa-calendar-alt"></i> يونيو 2026</span>
-              <h3><a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener">حفل تكريم المتفوقين وتخريج دفعة 2025-2026</a></h3>
-              <p>أقامت الكلية حفل تكريم لأوائل الدفعة وخريجي هذا العام بحضور القيادات الجامعية وذوي الطلاب.</p>
+              <span class="news-date"><i class="fas fa-calendar-alt"></i> أغسطس 2026</span>
+              <h3><a href="news.html">تكريم خريجي الكلية المتفوقين وإشادة رئيس جامعة الأزهر بفرع أسيوط</a></h3>
+              <p>شهدت الكلية احتفالية تكريم الأوائل بحضور القيادات الأكاديمية وحصولهم على مراكز متقدمة.</p>
               <a href="news.html" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
             </div>
           </article>
           <article class="news-card">
             <div class="news-img-wrap">
               <div style="width:130px;height:120px;background:linear-gradient(135deg,#0a8a5c,#1a6b3c);display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:rgba(255,255,255,0.8);">
+                <i class="fas fa-ambulance"></i>
+              </div>
+              <span class="news-cat">قوافل</span>
+            </div>
+            <div class="news-body">
+              <span class="news-date"><i class="fas fa-calendar-alt"></i> يوليو 2026</span>
+              <h3><a href="news.html">انطلاق القافلة الطبية والصيدلانية الشاملة لمراكز محافظة أسيوط</a></h3>
+              <p>تقديم خدمات صيدلانية واستشارات مجانية لأهالي أسيوط وتوزيع المستحضرات الدوائية.</p>
+              <a href="news.html" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+            </div>
+          </article>
+          <article class="news-card">
+            <div class="news-img-wrap">
+              <div style="width:130px;height:120px;background:linear-gradient(135deg,#d4a017,#b8850f);display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:rgba(255,255,255,0.8);">
                 <i class="fas fa-microscope"></i>
               </div>
               <span class="news-cat">بحث علمي</span>
             </div>
             <div class="news-body">
-              <span class="news-date"><i class="fas fa-calendar-alt"></i> مايو 2026</span>
-              <h3><a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener">نشر أبحاث علمية لأعضاء هيئة التدريس في مجلات دولية</a></h3>
-              <p>نشر باحثو الكلية أبحاثاً محكّمة في مجلات دولية متخصصة رفيعة المستوى في مجال علوم الصيدلة.</p>
+              <span class="news-date"><i class="fas fa-calendar-alt"></i> يونيو 2026</span>
+              <h3><a href="news.html">نشر أبحاث متميزة لأعضاء هيئة التدريس في دوريات دولية Q1</a></h3>
+              <p>نشر أبحاث في الكيمياء الصيدلية والصيدلانيات بالتعاون مع مراكز علمية عالمية.</p>
               <a href="news.html" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
             </div>
           </article>
         </div>
         <div class="more-news-btn">
           <a href="news.html" class="btn btn-outline-green">
-            <i class="fas fa-newspaper"></i> جميع الأخبار والفعاليات
+            <i class="fas fa-newspaper"></i> جميع الأخبار والمنشورات
           </a>
         </div>
       </div>
@@ -543,49 +562,6 @@
   </div>
 </section>
 
-<!-- STUDENT SERVICES -->
-<section class="services-section section" id="services">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-badge">بوابة الطالب</span>
-      <h2 class="section-title">خدمات الطلاب</h2>
-      <div class="title-line"><span></span></div>
-    </div>
-    <div class="services-grid">
-      <a href="students.html#academic-system" class="service-card">
-        <div class="service-icon"><i class="fas fa-laptop"></i></div>
-        <h4>النظام الأكاديمي</h4>
-        <p>متابعة النتائج والجداول الدراسية</p>
-      </a>
-      <a href="students.html#library" class="service-card">
-        <div class="service-icon"><i class="fas fa-book"></i></div>
-        <h4>المكتبة الرقمية</h4>
-        <p>مصادر علمية ومراجع متنوعة</p>
-      </a>
-      <a href="students.html#calendar" class="service-card">
-        <div class="service-icon"><i class="fas fa-calendar-check"></i></div>
-        <h4>التقويم الأكاديمي</h4>
-        <p>مواعيد الامتحانات والإجازات</p>
-      </a>
-      <a href="students.html#elearning" class="service-card">
-        <div class="service-icon"><i class="fas fa-video"></i></div>
-        <h4>التعلم الإلكتروني</h4>
-        <p>منصة التعليم عن بُعد</p>
-      </a>
-      <a href="students.html#training" class="service-card">
-        <div class="service-icon"><i class="fas fa-briefcase"></i></div>
-        <h4>التدريب الميداني</h4>
-        <p>برامج التدريب والتطبيق العملي</p>
-      </a>
-      <a href="contact.html" class="service-card">
-        <div class="service-icon"><i class="fas fa-comments"></i></div>
-        <h4>التواصل مع الإدارة</h4>
-        <p>استفسارات وشكاوى الطلاب</p>
-      </a>
-    </div>
-  </div>
-</section>
-
 <!-- GALLERY -->
 <section class="gallery-section section" id="gallery">
   <div class="container">
@@ -727,13 +703,6 @@
               </div>
             </div>
           </a>
-          <div class="footer-fb-like">
-            <div class="fb-like"
-                 data-href="https://www.facebook.com/pharmacyazharboysassuit"
-                 data-width="" data-layout="button_count"
-                 data-action="like" data-size="small" data-share="true">
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -751,6 +720,21 @@
     </div>
   </div>
 </footer>
+
+<!-- LIVE SEARCH MODAL -->
+<div class="search-modal-overlay" id="searchModal">
+  <div class="search-modal-card">
+    <button class="search-modal-close" id="searchClose"><i class="fas fa-times"></i></button>
+    <h3 style="font-size:1.2rem;font-weight:900;color:var(--primary);"><i class="fas fa-search"></i> البحث السريع في الموقع</h3>
+    <div class="search-input-wrap">
+      <input type="text" id="searchInput" placeholder="اكتب كلمة البحث (مثال: أقسام، جداول، أبحاث...)" />
+      <i class="fas fa-search"></i>
+    </div>
+    <div class="search-results-box" id="searchResults">
+      <p style="text-align:center;color:var(--text-light);font-size:13px;padding:10px;">ابداً الكتابة لعرض النتائج الفورية...</p>
+    </div>
+  </div>
+</div>
 
 <button class="back-to-top" id="backToTop" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
 
