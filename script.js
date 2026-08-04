@@ -5,7 +5,94 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  // ---- Preloader ----
+  // ---- Google Translate Instant Switcher ----
+  window.googleTranslateElementInit = function () {
+    if (window.google && window.google.translate) {
+      new window.google.translate.TranslateElement({
+        pageLanguage: 'ar',
+        includedLanguages: 'ar,en',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  };
+
+  (function loadGoogleTranslate() {
+    if (!document.getElementById('google_translate_element')) {
+      const gdiv = document.createElement('div');
+      gdiv.id = 'google_translate_element';
+      document.body.appendChild(gdiv);
+    }
+    if (!document.getElementById('gt-script')) {
+      const s = document.createElement('script');
+      s.id = 'gt-script';
+      s.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      document.head.appendChild(s);
+    }
+  })();
+
+  function setLanguage(lang) {
+    const htmlEl = document.documentElement;
+    const langSwitchers = document.querySelectorAll('.lang-switch');
+
+    if (lang === 'en') {
+      htmlEl.setAttribute('dir', 'ltr');
+      htmlEl.setAttribute('lang', 'en');
+      localStorage.setItem('site_lang', 'en');
+
+      langSwitchers.forEach(sw => {
+        const arBtn = sw.querySelector('a:first-child');
+        const enBtn = sw.querySelector('a:last-child');
+        if (arBtn) arBtn.classList.remove('active');
+        if (enBtn) enBtn.classList.add('active');
+      });
+
+      // Trigger Google Translate to English
+      triggerGoogleTranslate('en');
+    } else {
+      htmlEl.setAttribute('dir', 'rtl');
+      htmlEl.setAttribute('lang', 'ar');
+      localStorage.setItem('site_lang', 'ar');
+
+      langSwitchers.forEach(sw => {
+        const arBtn = sw.querySelector('a:first-child');
+        const enBtn = sw.querySelector('a:last-child');
+        if (enBtn) enBtn.classList.remove('active');
+        if (arBtn) arBtn.classList.add('active');
+      });
+
+      // Trigger Google Translate to Arabic / Restore
+      triggerGoogleTranslate('ar');
+    }
+  }
+
+  function triggerGoogleTranslate(targetLang) {
+    const gtSelect = document.querySelector('.goog-te-combo');
+    if (gtSelect) {
+      gtSelect.value = targetLang;
+      gtSelect.dispatchEvent(new Event('change'));
+    } else {
+      setTimeout(() => triggerGoogleTranslate(targetLang), 300);
+    }
+  }
+
+  // Language Switcher Event Listeners
+  document.querySelectorAll('.lang-switch a').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const text = this.textContent.trim().toLowerCase();
+      if (text.includes('en') || text.includes('english')) {
+        setLanguage('en');
+      } else {
+        setLanguage('ar');
+      }
+    });
+  });
+
+  // Restore saved language on load
+  const savedLang = localStorage.getItem('site_lang');
+  if (savedLang === 'en') {
+    setTimeout(() => setLanguage('en'), 400);
+  }
   const preloader = document.getElementById('preloader');
   if (preloader) {
     window.addEventListener('load', function () {
@@ -29,6 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const sitePages = [
     { title: 'الصفحة الرئيسية', desc: 'كلية الصيدلة جامعة الأزهر أسيوط', url: 'index.html' },
+    { title: 'سجل الإنجازات والتميز 🏆', desc: 'تكريمات الكلية، الجوائز الدولية، وبراءات الاختراع', url: 'achievements.html' },
     { title: 'عن الكلية وكلمة العميد', desc: 'تاريخ الكلية، الرؤية، والرسالة والاعتماد', url: 'about.html' },
     { title: 'الكيمياء الصيدلية والتحليلية', desc: 'الأقسام الأكاديمية - الكيمياء', url: 'departments.html#pharmaceutical-chemistry' },
     { title: 'قسم الصيدلانيات', desc: 'الأقسام الأكاديمية - الصيدلانيات', url: 'departments.html#pharmaceutics' },

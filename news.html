@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>الأخبار والفعاليات والمدونة | كلية الصيدلة - جامعة الأزهر - أسيوط</title>
-  <meta name="description" content="متابعة مستمرة لأحدث أخبار ومنشورات كلية الصيدلة بجامعة الأزهر أسيوط نقلاً عن الصفحة الرسمية على فيسبوك - إنجازات، مؤتمرات، قوافل طبية، وإعلانات الطلاب." />
-  <meta name="keywords" content="أخبار كلية الصيدلة, جامعة الأزهر أسيوط, فيسبوك كلية الصيدلة, إنجازات صيدلة أسيوط, قوافل طبية, امتحانات الصيدلة" />
+  <meta name="description"
+    content="متابعة مستمرة لأحدث أخبار ومنشورات كلية الصيدلة بجامعة الأزهر أسيوط نقلاً عن الصفحة الرسمية على فيسبوك - إنجازات، مؤتمرات، قوافل طبية، وإعلانات الطلاب." />
+  <meta name="keywords"
+    content="أخبار كلية الصيدلة, جامعة الأزهر أسيوط, فيسبوك كلية الصيدلة, إنجازات صيدلة أسيوط, قوافل طبية, امتحانات الصيدلة" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://pharma-as-azedueg.vercel.app/news.html" />
 
@@ -13,7 +16,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://pharma-as-azedueg.vercel.app/news.html" />
   <meta property="og:title" content="الأخبار والفعاليات والمدونة | كلية الصيدلة - جامعة الأزهر - أسيوط" />
-  <meta property="og:description" content="متابعة مستمرة لأحدث أخبار ومنشورات كلية الصيدلة بجامعة الأزهر أسيوط نقلاً عن الصفحة الرسمية على فيسبوك" />
+  <meta property="og:description"
+    content="متابعة مستمرة لأحدث أخبار ومنشورات كلية الصيدلة بجامعة الأزهر أسيوط نقلاً عن الصفحة الرسمية على فيسبوك" />
   <meta property="og:image" content="https://pharma-as-azedueg.vercel.app/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -23,365 +27,575 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="الأخبار والفعاليات والمدونة | كلية الصيدلة أسيوط" />
-  <meta name="twitter:description" content="أحدث الأخبار والإنجازات والمنشورات الرسمية لكلية الصيدلة بجامعة الأزهر فرع أسيوط" />
+  <meta name="twitter:description"
+    content="أحدث الأخبار والإنجازات والمنشورات الرسمية لكلية الصيدلة بجامعة الأزهر فرع أسيوط" />
   <meta name="twitter:image" content="https://pharma-as-azedueg.vercel.app/og-image.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700;900&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .news-page-layout { display: grid; grid-template-columns: 1fr 420px; gap: 40px; align-items: start; }
-    .fb-sticky { position: sticky; top: 90px; }
-    @media (max-width: 1024px) { .news-page-layout { grid-template-columns: 1fr; } .fb-sticky { position: static; } }
-    
-    .news-full-card { background: #fff; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); margin-bottom: 24px; border: 1px solid var(--border); transition: var(--transition); display: flex; flex-direction: column; }
-    .news-full-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
-    .news-full-card .nfc-header { padding: 18px 24px 12px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f0f2f5; }
-    .news-full-card .nfc-author { display: flex; align-items: center; gap: 12px; }
-    .news-full-card .nfc-author img { width: 44px; height: 44px; border-radius: 50%; object-fit: contain; background: #f0f8f4; border: 1px solid var(--border); }
-    .news-full-card .nfc-author-info strong { font-size: 14px; font-weight: 800; color: var(--text-dark); display: block; }
-    .news-full-card .nfc-author-info span { font-size: 11.5px; color: var(--text-light); display: flex; align-items: center; gap: 4px; }
-    .news-full-card .nfc-body { padding: 20px 24px; flex: 1; }
-    .news-full-card .nfc-body .news-cat { display: inline-flex; align-items: center; gap: 5px; background: var(--primary); color: #fff; padding: 4px 14px; border-radius: 15px; font-size: 11.5px; font-weight: 700; margin-bottom: 12px; }
-    .news-full-card .nfc-body .news-cat.cat-fb { background: #1877f2; }
-    .news-full-card .nfc-body .news-cat.cat-research { background: #d4a017; }
-    .news-full-card .nfc-body .news-cat.cat-convoy { background: #0a8a5c; }
-    .news-full-card .nfc-body h2 { font-size: 1.25rem; font-weight: 900; color: var(--text-dark); margin-bottom: 12px; line-height: 1.5; }
-    .news-full-card .nfc-body p { font-size: 14px; color: var(--text-body); line-height: 1.85; margin-bottom: 16px; white-space: pre-line; }
-    .news-full-card .nfc-footer { padding: 14px 24px; background: #f8f9fa; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-    .news-full-card .nfc-stats { display: flex; align-items: center; gap: 16px; font-size: 13px; color: var(--text-light); }
-    .news-full-card .nfc-stats span { display: flex; align-items: center; gap: 5px; }
-    .news-full-card .nfc-stats i.fa-thumbs-up { color: #1877f2; }
-    .news-full-card .nfc-stats i.fa-comment { color: var(--secondary); }
-    
-    .upcoming-event-item { display: flex; gap: 16px; align-items: center; padding: 16px; background: #fff; border-radius: var(--radius); border-right: 4px solid var(--secondary); box-shadow: var(--shadow-sm); margin-bottom: 12px; transition: var(--transition); }
-    .upcoming-event-item:hover { transform: translateX(-4px); box-shadow: var(--shadow-md); }
-    .event-date-box { background: var(--primary); color: #fff; border-radius: 10px; padding: 10px 14px; text-align: center; min-width: 55px; flex-shrink: 0; }
-    .event-date-box .eday { display: block; font-size: 1.6rem; font-weight: 900; line-height: 1; }
-    .event-date-box .emon { font-size: 11px; }
-    .event-info h4 { font-size: 14px; font-weight: 800; color: var(--text-dark); margin-bottom: 4px; }
-    .event-info p { font-size: 12px; color: var(--text-light); }
+    .news-page-layout {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .fb-sticky {
+      position: sticky;
+      top: 90px;
+    }
+
+    @media (max-width: 1024px) {
+      .news-page-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .fb-sticky {
+        position: static;
+      }
+    }
+
+    .news-full-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-full-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+
+    .news-full-card .nfc-header {
+      padding: 18px 24px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #f0f2f5;
+    }
+
+    .news-full-card .nfc-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .news-full-card .nfc-author img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: contain;
+      background: #f0f8f4;
+      border: 1px solid var(--border);
+    }
+
+    .news-full-card .nfc-author-info strong {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-dark);
+      display: block;
+    }
+
+    .news-full-card .nfc-author-info span {
+      font-size: 11.5px;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .news-full-card .nfc-body {
+      padding: 20px 24px;
+      flex: 1;
+    }
+
+    .news-full-card .nfc-body .news-cat {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--primary);
+      color: #fff;
+      padding: 4px 14px;
+      border-radius: 15px;
+      font-size: 11.5px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .news-full-card .nfc-body .news-cat.cat-fb {
+      background: #1877f2;
+    }
+
+    .news-full-card .nfc-body .news-cat.cat-research {
+      background: #d4a017;
+    }
+
+    .news-full-card .nfc-body .news-cat.cat-convoy {
+      background: #0a8a5c;
+    }
+
+    .news-full-card .nfc-body h2 {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .news-full-card .nfc-body p {
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.85;
+      margin-bottom: 16px;
+      white-space: pre-line;
+    }
+
+    .news-full-card .nfc-footer {
+      padding: 14px 24px;
+      background: #f8f9fa;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .news-full-card .nfc-stats {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--text-light);
+    }
+
+    .news-full-card .nfc-stats span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .news-full-card .nfc-stats i.fa-thumbs-up {
+      color: #1877f2;
+    }
+
+    .news-full-card .nfc-stats i.fa-comment {
+      color: var(--secondary);
+    }
+
+    .upcoming-event-item {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      background: #fff;
+      border-radius: var(--radius);
+      border-right: 4px solid var(--secondary);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 12px;
+      transition: var(--transition);
+    }
+
+    .upcoming-event-item:hover {
+      transform: translateX(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .event-date-box {
+      background: var(--primary);
+      color: #fff;
+      border-radius: 10px;
+      padding: 10px 14px;
+      text-align: center;
+      min-width: 55px;
+      flex-shrink: 0;
+    }
+
+    .event-date-box .eday {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .event-date-box .emon {
+      font-size: 11px;
+    }
+
+    .event-info h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .event-info p {
+      font-size: 12px;
+      color: var(--text-light);
+    }
   </style>
 </head>
+
 <body>
 
-<!-- Preloader -->
-<div id="preloader">
-  <div class="spinner-box">
-    <div class="configure-border-1"><div class="configure-core"></div></div>
-    <div class="configure-border-2"><div class="configure-core"></div></div>
-    <div class="preloader-text">كلية الصيدلة - جامعة الأزهر أسيوط</div>
-  </div>
-</div>
-
-<!-- TOP BAR -->
-<div class="topbar">
-  <div class="container">
-    <div class="topbar-inner">
-      <div class="topbar-right">
-        <i class="fas fa-phone-alt"></i><span>088 - 2366068</span>
-        <span class="divider-v"></span>
-        <i class="fas fa-envelope"></i><span>info@pharmacy.azhar.edu.eg</span>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner-box">
+      <div class="configure-border-1">
+        <div class="configure-core"></div>
       </div>
-      <div class="topbar-left">
-        <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="social-link"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-x-twitter"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-        <div class="lang-switch"><a href="#" class="active">عربي</a><span>|</span><a href="#">English</a></div>
+      <div class="configure-border-2">
+        <div class="configure-core"></div>
       </div>
+      <div class="preloader-text">كلية الصيدلة - جامعة الأزهر أسيوط</div>
     </div>
   </div>
-</div>
 
-<!-- HEADER -->
-<header id="header" class="site-header">
-  <div class="container">
-    <div class="header-inner">
-      <div class="logos-area">
-        <a href="index.html"><img src="pharma-as logo.png" alt="كلية الصيدلة - أسيوط" class="logo logo-pharmacy" /></a>
-        <div class="site-title-area">
-          <div class="site-name">كلية الصيدلة</div>
-          <p class="site-subtitle">جامعة الأزهر &mdash; أسيوط</p>
-          <p class="site-subtitle-en">Faculty of Pharmacy &mdash; Al-Azhar University &mdash; Assiut</p>
-        </div>
-        <a href="index.html"><img src="al-azhar-university-seeklogo.png" alt="جامعة الأزهر" class="logo logo-azhar" /></a>
-      </div>
-      <button class="hamburger" id="hamburger" aria-label="قائمة"><span></span><span></span><span></span></button>
-    </div>
-  </div>
-  <nav class="main-nav" id="mainNav">
+  <!-- TOP BAR -->
+  <div class="topbar">
     <div class="container">
-      <ul class="nav-menu">
-        <li class="nav-item" data-page="index"><a href="index.html">الرئيسية</a></li>
-        <li class="nav-item has-dropdown" data-page="about"><a href="about.html">الكلية <i class="fas fa-angle-down"></i></a>
-          <ul class="dropdown">
-            <li><a href="about.html#dean"><i class="fas fa-quote-right"></i> كلمة العميد</a></li>
-            <li><a href="about.html"><i class="fas fa-university"></i> عن الكلية</a></li>
-            <li><a href="about.html#administration"><i class="fas fa-user-tie"></i> عمادة الكلية</a></li>
-            <li><a href="about.html#agencies"><i class="fas fa-users"></i> وكالات الكلية</a></li>
-            <li><a href="about.html#management"><i class="fas fa-building"></i> إدارة الكلية</a></li>
-            <li><a href="community.html"><i class="fas fa-handshake"></i> الشراكة المجتمعية</a></li>
-            <li><a href="about.html#councils"><i class="fas fa-gavel"></i> مجالس الكلية</a></li>
-          </ul>
-        </li>
-        <li class="nav-item" data-page="departments"><a href="departments.html">أقسام الكلية</a></li>
-        <li class="nav-item has-dropdown" data-page="academic-programs"><a href="academic-programs.html">البرامج الأكاديمية <i class="fas fa-angle-down"></i></a>
-          <ul class="dropdown">
-            <li><a href="academic-programs.html#bachelor"><i class="fas fa-graduation-cap"></i> بكالوريوس الصيدلة</a></li>
-            <li><a href="academic-programs.html#postgrad"><i class="fas fa-flask"></i> برامج الدراسات العليا</a></li>
-          </ul>
-        </li>
-        <li class="nav-item has-dropdown" data-page="research"><a href="research.html">البحث العلمي <i class="fas fa-angle-down"></i></a>
-          <ul class="dropdown">
-            <li><a href="research.html#lab"><i class="fas fa-microscope"></i> المختبر المركزي</a></li>
-            <li><a href="research.html#interests"><i class="fas fa-lightbulb"></i> الاهتمامات البحثية</a></li>
-            <li><a href="research.html#entities"><i class="fas fa-atom"></i> الكيانات البحثية</a></li>
-            <li><a href="research.html#training"><i class="fas fa-chalkboard-teacher"></i> التدريب البحثي</a></li>
-          </ul>
-        </li>
-        <li class="nav-item" data-page="community"><a href="community.html">خدمة المجتمع</a></li>
-        <li class="nav-item has-dropdown" data-page="students"><a href="students.html">الطلاب <i class="fas fa-angle-down"></i></a>
-          <ul class="dropdown">
-            <li><a href="students.html#future"><i class="fas fa-user-graduate"></i> طلبة المستقبل</a></li>
-            <li><a href="students.html#current"><i class="fas fa-users"></i> الطلبة الحاليين</a></li>
-            <li><a href="students.html#schedules"><i class="fas fa-calendar-alt"></i> الجداول الدراسية</a></li>
-          </ul>
-        </li>
-        <li class="nav-item" data-page="faculty"><a href="faculty.html">الهيئة التدريسية</a></li>
-        <li class="nav-item" data-page="news"><a href="news.html">الأخبار والفعاليات</a></li>
-        <li class="nav-item" data-page="contact"><a href="contact.html">اتصل بنا</a></li>
-      </ul>
-    </div>
-  </nav>
-</header>
-
-<!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="hero-circle hero-circle-1"></div>
-  <div class="hero-circle hero-circle-2"></div>
-  <div class="container">
-    <div class="page-hero-content">
-      <nav class="breadcrumb">
-        <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
-        <span class="sep"><i class="fas fa-angle-left"></i></span>
-        <span class="current">الأخبار والفعاليات والمدونة</span>
-      </nav>
-      <h1>أخبار وإنجازات الكلية</h1>
-      <p class="hero-lead">متابعة دقيقة ومستمرة لجميع إنجازات كلية الصيدلة بجامعة الأزهر أسيوط، الفعاليات البحثية، القوافل الطبية، والإعلانات الطلابية من صفحة فيسبوك الرسمية.</p>
-      <div class="page-hero-meta">
-        <span><i class="fab fa-facebook-f"></i> منشورات الفيسبوك الرسمية</span>
-        <span><i class="fas fa-award"></i> إنجازات وتكريمات الكلية</span>
-        <span><i class="fas fa-bullhorn"></i> إعلانات الكنترول وشؤون الطلاب</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ANNOUNCEMENT BAND -->
-<div class="announce-band">
-  <div class="container">
-    <div class="announce-inner">
-      <span class="icon"><i class="fas fa-bullhorn"></i></span>
-      <p>📢 هام: متابعة مستمرة لصفحة فيسبوك الرسمية لكلية الصيدلة بنين بأسيوط لمعرفة آخر الجداول والنتائج</p>
-      <button class="announce-close" aria-label="إغلاق"><i class="fas fa-times"></i></button>
-    </div>
-  </div>
-</div>
-
-<!-- MAIN CONTENT -->
-<section class="section" style="background:#f8f9fa;">
-  <div class="container">
-    <div class="news-page-layout">
-
-      <!-- Left: Rich News & Facebook Posts Feed -->
-      <div class="news-main">
-
-        <!-- Post 1: Real College Achievement -->
-        <article class="news-full-card">
-          <div class="nfc-header">
-            <div class="nfc-author">
-              <img src="pharma-as logo.png" alt="كلية الصيدلة أسيوط" />
-              <div class="nfc-author-info">
-                <strong>كلية الصيدلة بنين جامعة الأزهر بأسيوط</strong>
-                <span><i class="fab fa-facebook-f" style="color:#1877f2;"></i> المنشور الرسمي على فيسبوك &bull; منذ ساعتين</span>
-              </div>
-            </div>
-            <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="btn btn-sm" style="background:#1877f2;"><i class="fab fa-facebook-f"></i> عرض الفيس</a>
-          </div>
-          <div class="nfc-body">
-            <span class="news-cat cat-fb"><i class="fas fa-trophy"></i> إنجازات الكلية</span>
-            <h2>تكريم خريجي كلية الصيدلة المتميزين وإشادة رئيس جامعة الأزهر بفرع أسيوط</h2>
-            <p>شهدت كلية الصيدلة بجامعة الأزهر فرع أسيوط حفل تكريم خريجي الكلية للعام الجامعي، بحضور قيادات فرع الجامعة بأسيوط والسيد أ.د. عميد الكلية.
-
-وأشاد نائب رئيس الجامعة بالجهود المبذولة داخل الكلية وتفوق خريجيها في القطاع الطبي والصيدلي وحصولهم على مراكز متقدمة في اختبارات ممارسة المهنة واختبارات الدراسات العليا.
-
-كل التوفيق لأبنائنا الصيادلة في مسيرتهم العملية والمهنية!</p>
-          </div>
-          <div class="nfc-footer">
-            <div class="nfc-stats">
-              <span><i class="fas fa-thumbs-up"></i> 342 إعجاب</span>
-              <span><i class="fas fa-comment"></i> 58 تعليق</span>
-              <span><i class="fas fa-share"></i> 24 مشاركة</span>
-            </div>
-            <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="read-more">رابط المنشور الأصلي <i class="fas fa-external-link-alt"></i></a>
-          </div>
-        </article>
-
-        <!-- Post 2: Medical Convoy -->
-        <article class="news-full-card">
-          <div class="nfc-header">
-            <div class="nfc-author">
-              <img src="pharma-as logo.png" alt="كلية الصيدلة أسيوط" />
-              <div class="nfc-author-info">
-                <strong>كلية الصيدلة بنين جامعة الأزهر بأسيوط</strong>
-                <span><i class="fab fa-facebook-f" style="color:#1877f2;"></i> المنشور الرسمي على فيسبوك &bull; يوم أمس</span>
-              </div>
-            </div>
-            <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="btn btn-sm" style="background:#1877f2;"><i class="fab fa-facebook-f"></i> عرض الفيس</a>
-          </div>
-          <div class="nfc-body">
-            <span class="news-cat cat-convoy"><i class="fas fa-ambulance"></i> خدمة المجتمع</span>
-            <h2>انطلاق القافلة الطبية والصيدلانية الشاملة لمراكز محافظة أسيوط</h2>
-            <p>في إطار دور جامعة الأزهر المجتمعي والتنموي في صعيد مصر، انطلقت صباح اليوم القافلة الطبية والصيدلانية الشاملة التي تنظمها كلية الصيدلة بالتعاون مع الكليات الطبية بالفرع.
-
-تضمنت القافلة تقديم الاستشارات الطبية وصرف الأدوية والمستحضرات الدوائية مجاناً للأهالي، بالإضافة إلى حملات التوعية بطرق الوقاية والاستخدام الأمثل للدواء.</p>
-          </div>
-          <div class="nfc-footer">
-            <div class="nfc-stats">
-              <span><i class="fas fa-thumbs-up"></i> 489 إعجاب</span>
-              <span><i class="fas fa-comment"></i> 72 تعليق</span>
-              <span><i class="fas fa-share"></i> 41 مشاركة</span>
-            </div>
-            <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="read-more">رابط المنشور الأصلي <i class="fas fa-external-link-alt"></i></a>
-          </div>
-        </article>
-
-        <!-- Post 3: Research Achievement -->
-        <article class="news-full-card">
-          <div class="nfc-header">
-            <div class="nfc-author">
-              <img src="pharma-as logo.png" alt="كلية الصيدلة أسيوط" />
-              <div class="nfc-author-info">
-                <strong>كلية الصيدلة بنين جامعة الأزهر بأسيوط</strong>
-                <span><i class="fab fa-facebook-f" style="color:#1877f2;"></i> المنشور الرسمي على فيسبوك &bull; منذ 3 أيام</span>
-              </div>
-            </div>
-            <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="btn btn-sm" style="background:#1877f2;"><i class="fab fa-facebook-f"></i> عرض الفيس</a>
-          </div>
-          <div class="nfc-body">
-            <span class="news-cat cat-research"><i class="fas fa-microscope"></i> تميز بحثي</span>
-            <h2>إنجاز بحثي جديد: نشر أبحاث متميزة لأعضاء هيئة التدريس في دوريات دولية مصنفة Q1</h2>
-            <p>نهنئ السيد الأستاذ الدكتور وكيل الكلية للدراسات العليا والسادة أعضاء هيئة التدريس بقسمي الكيمياء الصيدلية والصيدلانيات بنشر أبحاث علمية متقدمة في تطوير المركبات النانوية الدوائية في دوريات علمية رفيعة المستوى (Q1).
-
-يأتي هذا الإنجاز تأكيداً على المكانة العلمية المتميزة لكلية الصيدلة جامعة الأزهر بأسيوط في التصنيفات الدولية.</p>
-          </div>
-          <div class="nfc-footer">
-            <div class="nfc-stats">
-              <span><i class="fas fa-thumbs-up"></i> 512 إعجاب</span>
-              <span><i class="fas fa-comment"></i> 89 تعليق</span>
-              <span><i class="fas fa-share"></i> 53 مشاركة</span>
-            </div>
-            <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="read-more">رابط المنشور الأصلي <i class="fas fa-external-link-alt"></i></a>
-          </div>
-        </article>
-
-        <!-- Post 4: Exams & Control Announcement -->
-        <article class="news-full-card">
-          <div class="nfc-header">
-            <div class="nfc-author">
-              <img src="pharma-as logo.png" alt="كلية الصيدلة أسيوط" />
-              <div class="nfc-author-info">
-                <strong>إدارة الكنترول وشؤون الطلاب</strong>
-                <span><i class="fab fa-facebook-f" style="color:#1877f2;"></i> إعلان هام على فيسبوك &bull; منذ 5 أيام</span>
-              </div>
-            </div>
-            <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="btn btn-sm" style="background:#1877f2;"><i class="fab fa-facebook-f"></i> عرض الفيس</a>
-          </div>
-          <div class="nfc-body">
-            <span class="news-cat" style="background:#dc3545;"><i class="fas fa-exclamation-triangle"></i> إعلان هام</span>
-            <h2>تعليمات وقواعد امتحانات الفصل الدراسي والتنبيهات الخاصة بالطلاب</h2>
-            <p>تعلن إدارة شؤون الطلاب بجميع الفرق الدراسية عن ضرورة الالتزام بإحضار إثبات الشخصية (كارنيه الكلية) والدخول للقاعات قبل بدء الامتحان بربع ساعة.
-
-يُحظر تماماً اصطحاب الهواتف المحمولة أو الأجهزة الإلكترونية داخل لجان الامتحانات. مع أطيب تمنياتنا لجميع أبنائنا الطلاب بالنجاح والتوفيق.</p>
-          </div>
-          <div class="nfc-footer">
-            <div class="nfc-stats">
-              <span><i class="fas fa-thumbs-up"></i> 290 إعجاب</span>
-              <span><i class="fas fa-comment"></i> 114 تعليق</span>
-              <span><i class="fas fa-share"></i> 67 مشاركة</span>
-            </div>
-            <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="read-more">رابط المنشور الأصلي <i class="fas fa-external-link-alt"></i></a>
-          </div>
-        </article>
-
-      </div>
-
-      <!-- Right: Facebook Live Feed Sidebar -->
-      <div class="fb-sticky">
-        <div style="margin-bottom:20px;">
-          <div class="section-header align-right" style="margin-bottom:16px;">
-            <span class="section-badge fb-badge"><i class="fab fa-facebook-f"></i> مباشر من فيسبوك</span>
-          </div>
-
-          <!-- Facebook Embedded Timeline Widget -->
-          <div class="fb-embed-container" style="padding:0;min-height:720px;">
-            <div class="fb-page"
-                 data-href="https://www.facebook.com/pharmacyazharboysassuit"
-                 data-tabs="timeline"
-                 data-width=""
-                 data-height="720"
-                 data-small-header="false"
-                 data-adapt-container-width="true"
-                 data-hide-cover="false"
-                 data-show-facepile="true">
-            </div>
-          </div>
-
-          <!-- Facebook CTA Bar -->
-          <div class="fb-cta-bar" style="margin-top:20px;">
-            <div>
-              <p>الصفحة الرسمية على فيسبوك</p>
-              <small>pharmacyazharboysassuit</small>
-            </div>
-            <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="btn btn-outline" style="border-color:rgba(255,255,255,0.8);font-size:13px;padding:8px 18px;">
-              <i class="fab fa-facebook-f"></i> متابعة الآن
-            </a>
-          </div>
-
-          <!-- Facebook Like Box -->
-          <div style="background:#fff;border-radius:var(--radius);padding:16px;margin-top:12px;box-shadow:var(--shadow-sm);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
-            <span style="font-size:13px;font-weight:700;color:var(--text-dark);">تابعنا وتفاعل معنا مباشرة:</span>
-            <div class="fb-like"
-                 data-href="https://www.facebook.com/pharmacyazharboysassuit"
-                 data-width="" data-layout="button_count"
-                 data-action="like" data-size="large" data-share="true">
-            </div>
-          </div>
-
+      <div class="topbar-inner">
+        <div class="topbar-right">
+          <i class="fas fa-phone-alt"></i><span>088 - 2366068</span>
+          <span class="divider-v"></span>
+          <i class="fas fa-envelope"></i><span>info@pharmacy.azhar.edu.eg</span>
+        </div>
+        <div class="topbar-left">
+          <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener"
+            class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <div class="lang-switch"><a href="#" class="active">عربي</a><span>|</span><a href="#">English</a></div>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="footer-bottom">
+  <!-- HEADER -->
+  <header id="header" class="site-header">
     <div class="container">
-      <div class="footer-bottom-inner">
-        <p>جميع الحقوق محفوظة &copy; 2026 كلية الصيدلة - جامعة الأزهر - أسيوط</p>
-        <div class="footer-bottom-links"><a href="index.html">الرئيسية</a><a href="contact.html">اتصل بنا</a></div>
+      <div class="header-inner">
+        <div class="logos-area">
+          <a href="index.html"><img src="pharma-as logo.png" alt="كلية الصيدلة - أسيوط"
+              class="logo logo-pharmacy" /></a>
+          <div class="site-title-area">
+            <div class="site-name">كلية الصيدلة</div>
+            <p class="site-subtitle">جامعة الأزهر &mdash; أسيوط</p>
+            <p class="site-subtitle-en">Faculty of Pharmacy &mdash; Al-Azhar University &mdash; Assiut</p>
+          </div>
+          <a href="index.html"><img src="al-azhar-university-seeklogo.png" alt="جامعة الأزهر"
+              class="logo logo-azhar" /></a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="قائمة"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <nav class="main-nav" id="mainNav">
+      <div class="container">
+        <ul class="nav-menu">
+          <li class="nav-item" data-page="index"><a href="index.html">الرئيسية</a></li>
+          <li class="nav-item has-dropdown" data-page="about"><a href="about.html">الكلية <i
+                class="fas fa-angle-down"></i></a>
+            <ul class="dropdown">
+              <li><a href="about.html#dean"><i class="fas fa-quote-right"></i> كلمة العميد</a></li>
+              <li><a href="about.html"><i class="fas fa-university"></i> عن الكلية</a></li>
+              <li><a href="about.html#administration"><i class="fas fa-user-tie"></i> عمادة الكلية</a></li>
+              <li><a href="about.html#agencies"><i class="fas fa-users"></i> وكالات الكلية</a></li>
+              <li><a href="about.html#management"><i class="fas fa-building"></i> إدارة الكلية</a></li>
+              <li><a href="community.html"><i class="fas fa-handshake"></i> الشراكة المجتمعية</a></li>
+              <li><a href="about.html#councils"><i class="fas fa-gavel"></i> مجالس الكلية</a></li>
+            </ul>
+          </li>
+          <li class="nav-item" data-page="departments"><a href="departments.html">أقسام الكلية</a></li>
+          <li class="nav-item has-dropdown" data-page="academic-programs"><a href="academic-programs.html">البرامج
+              الأكاديمية <i class="fas fa-angle-down"></i></a>
+            <ul class="dropdown">
+              <li><a href="academic-programs.html#bachelor"><i class="fas fa-graduation-cap"></i> بكالوريوس الصيدلة</a>
+              </li>
+              <li><a href="academic-programs.html#postgrad"><i class="fas fa-flask"></i> برامج الدراسات العليا</a></li>
+            </ul>
+          </li>
+          <li class="nav-item has-dropdown" data-page="research"><a href="research.html">البحث العلمي <i
+                class="fas fa-angle-down"></i></a>
+            <ul class="dropdown">
+              <li><a href="research.html#lab"><i class="fas fa-microscope"></i> المختبر المركزي</a></li>
+              <li><a href="research.html#interests"><i class="fas fa-lightbulb"></i> الاهتمامات البحثية</a></li>
+              <li><a href="research.html#entities"><i class="fas fa-atom"></i> الكيانات البحثية</a></li>
+              <li><a href="research.html#training"><i class="fas fa-chalkboard-teacher"></i> التدريب البحثي</a></li>
+            </ul>
+          </li>
+          <li class="nav-item" data-page="community"><a href="community.html">خدمة المجتمع</a></li>
+          <li class="nav-item has-dropdown" data-page="students"><a href="students.html">الطلاب <i
+                class="fas fa-angle-down"></i></a>
+            <ul class="dropdown">
+              <li><a href="students.html#future"><i class="fas fa-user-graduate"></i> طلبة المستقبل</a></li>
+              <li><a href="students.html#current"><i class="fas fa-users"></i> الطلبة الحاليين</a></li>
+              <li><a href="students.html#schedules"><i class="fas fa-calendar-alt"></i> الجداول الدراسية</a></li>
+            </ul>
+          </li>
+          <li class="nav-item" data-page="faculty"><a href="faculty.html">الهيئة التدريسية</a></li>
+          <li class="nav-item" data-page="news"><a href="news.html">الأخبار والفعاليات</a></li>
+          <li class="nav-item" data-page="contact"><a href="contact.html">اتصل بنا</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="hero-circle hero-circle-1"></div>
+    <div class="hero-circle hero-circle-2"></div>
+    <div class="container">
+      <div class="page-hero-content">
+        <nav class="breadcrumb">
+          <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
+          <span class="sep"><i class="fas fa-angle-left"></i></span>
+          <span class="current">الأخبار والفعاليات والمدونة</span>
+        </nav>
+        <h1>أخبار وإنجازات الكلية</h1>
+        <p class="hero-lead">متابعة دقيقة ومستمرة لجميع إنجازات كلية الصيدلة بجامعة الأزهر أسيوط، الفعاليات البحثية،
+          القوافل الطبية، والإعلانات الطلابية من صفحة فيسبوك الرسمية.</p>
+        <div class="page-hero-meta">
+          <span><i class="fab fa-facebook-f"></i> منشورات الفيسبوك الرسمية</span>
+          <span><i class="fas fa-award"></i> إنجازات وتكريمات الكلية</span>
+          <span><i class="fas fa-bullhorn"></i> إعلانات الكنترول وشؤون الطلاب</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANNOUNCEMENT BAND -->
+  <div class="announce-band">
+    <div class="container">
+      <div class="announce-inner">
+        <span class="icon"><i class="fas fa-bullhorn"></i></span>
+        <p>📢 هام: متابعة مستمرة لصفحة فيسبوك الرسمية لكلية الصيدلة بنين بأسيوط لمعرفة آخر الجداول والنتائج</p>
+        <button class="announce-close" aria-label="إغلاق"><i class="fas fa-times"></i></button>
       </div>
     </div>
   </div>
-</footer>
 
-<button class="back-to-top" id="backToTop" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v19.0"></script>
-<script src="script.js"></script>
+  <!-- MAIN CONTENT -->
+  <section class="section" style="background:#f8f9fa;">
+    <div class="container">
+      <div class="news-page-layout">
+
+        <!-- Left: Rich News & Facebook Posts Feed -->
+        <div class="news-main">
+
+          <!-- Post 1: Real College Achievement -->
+          <article class="news-full-card">
+            <div class="nfc-header">
+              <div class="nfc-author">
+                <img src="pharma-as logo.png" alt="كلية الصيدلة أسيوط" />
+                <div class="nfc-author-info">
+                  <strong>كلية الصيدلة بنين جامعة الأزهر بأسيوط</strong>
+                  <span><i class="fab fa-facebook-f" style="color:#1877f2;"></i> المنشور الرسمي على فيسبوك &bull; منذ
+                    ساعتين</span>
+                </div>
+              </div>
+              <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener"
+                class="btn btn-sm" style="background:#1877f2;"><i class="fab fa-facebook-f"></i> عرض الفيس</a>
+            </div>
+            <div class="nfc-body">
+              <span class="news-cat cat-fb"><i class="fas fa-trophy"></i> إنجازات الكلية</span>
+              <h2>تكريم خريجي كلية الصيدلة المتميزين وإشادة رئيس جامعة الأزهر بفرع أسيوط</h2>
+              <p>شهدت كلية الصيدلة بجامعة الأزهر فرع أسيوط حفل تكريم خريجي الكلية للعام الجامعي، بحضور قيادات فرع
+                الجامعة بأسيوط والسيد أ.د. عميد الكلية.
+
+                وأشاد نائب رئيس الجامعة بالجهود المبذولة داخل الكلية وتفوق خريجيها في القطاع الطبي والصيدلي وحصولهم على
+                مراكز متقدمة في اختبارات ممارسة المهنة واختبارات الدراسات العليا.
+
+                كل التوفيق لأبنائنا الصيادلة في مسيرتهم العملية والمهنية!</p>
+            </div>
+            <div class="nfc-footer">
+              <div class="nfc-stats">
+                <span><i class="fas fa-thumbs-up"></i> 342 إعجاب</span>
+                <span><i class="fas fa-comment"></i> 58 تعليق</span>
+                <span><i class="fas fa-share"></i> 24 مشاركة</span>
+              </div>
+              <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener"
+                class="read-more">رابط المنشور الأصلي <i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </article>
+
+          <!-- Post 2: Medical Convoy -->
+          <article class="news-full-card">
+            <div class="nfc-header">
+              <div class="nfc-author">
+                <img src="pharma-as logo.png" alt="كلية الصيدلة أسيوط" />
+                <div class="nfc-author-info">
+                  <strong>كلية الصيدلة بنين جامعة الأزهر بأسيوط</strong>
+                  <span><i class="fab fa-facebook-f" style="color:#1877f2;"></i> المنشور الرسمي على فيسبوك &bull; يوم
+                    أمس</span>
+                </div>
+              </div>
+              <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener"
+                class="btn btn-sm" style="background:#1877f2;"><i class="fab fa-facebook-f"></i> عرض الفيس</a>
+            </div>
+            <div class="nfc-body">
+              <span class="news-cat cat-convoy"><i class="fas fa-ambulance"></i> خدمة المجتمع</span>
+              <h2>انطلاق القافلة الطبية والصيدلانية الشاملة لمراكز محافظة أسيوط</h2>
+              <p>في إطار دور جامعة الأزهر المجتمعي والتنموي في صعيد مصر، انطلقت صباح اليوم القافلة الطبية والصيدلانية
+                الشاملة التي تنظمها كلية الصيدلة بالتعاون مع الكليات الطبية بالفرع.
+
+                تضمنت القافلة تقديم الاستشارات الطبية وصرف الأدوية والمستحضرات الدوائية مجاناً للأهالي، بالإضافة إلى
+                حملات التوعية بطرق الوقاية والاستخدام الأمثل للدواء.</p>
+            </div>
+            <div class="nfc-footer">
+              <div class="nfc-stats">
+                <span><i class="fas fa-thumbs-up"></i> 489 إعجاب</span>
+                <span><i class="fas fa-comment"></i> 72 تعليق</span>
+                <span><i class="fas fa-share"></i> 41 مشاركة</span>
+              </div>
+              <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener"
+                class="read-more">رابط المنشور الأصلي <i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </article>
+
+          <!-- Post 3: Research Achievement -->
+          <article class="news-full-card">
+            <div class="nfc-header">
+              <div class="nfc-author">
+                <img src="pharma-as logo.png" alt="كلية الصيدلة أسيوط" />
+                <div class="nfc-author-info">
+                  <strong>كلية الصيدلة بنين جامعة الأزهر بأسيوط</strong>
+                  <span><i class="fab fa-facebook-f" style="color:#1877f2;"></i> المنشور الرسمي على فيسبوك &bull; منذ 3
+                    أيام</span>
+                </div>
+              </div>
+              <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener"
+                class="btn btn-sm" style="background:#1877f2;"><i class="fab fa-facebook-f"></i> عرض الفيس</a>
+            </div>
+            <div class="nfc-body">
+              <span class="news-cat cat-research"><i class="fas fa-microscope"></i> تميز بحثي</span>
+              <h2>إنجاز بحثي جديد: نشر أبحاث متميزة لأعضاء هيئة التدريس في دوريات دولية مصنفة Q1</h2>
+              <p>نهنئ السيد الأستاذ الدكتور وكيل الكلية للدراسات العليا والسادة أعضاء هيئة التدريس بقسمي الكيمياء
+                الصيدلية والصيدلانيات بنشر أبحاث علمية متقدمة في تطوير المركبات النانوية الدوائية في دوريات علمية رفيعة
+                المستوى (Q1).
+
+                يأتي هذا الإنجاز تأكيداً على المكانة العلمية المتميزة لكلية الصيدلة جامعة الأزهر بأسيوط في التصنيفات
+                الدولية.</p>
+            </div>
+            <div class="nfc-footer">
+              <div class="nfc-stats">
+                <span><i class="fas fa-thumbs-up"></i> 512 إعجاب</span>
+                <span><i class="fas fa-comment"></i> 89 تعليق</span>
+                <span><i class="fas fa-share"></i> 53 مشاركة</span>
+              </div>
+              <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener"
+                class="read-more">رابط المنشور الأصلي <i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </article>
+
+          <!-- Post 4: Exams & Control Announcement -->
+          <article class="news-full-card">
+            <div class="nfc-header">
+              <div class="nfc-author">
+                <img src="pharma-as logo.png" alt="كلية الصيدلة أسيوط" />
+                <div class="nfc-author-info">
+                  <strong>إدارة الكنترول وشؤون الطلاب</strong>
+                  <span><i class="fab fa-facebook-f" style="color:#1877f2;"></i> إعلان هام على فيسبوك &bull; منذ 5
+                    أيام</span>
+                </div>
+              </div>
+              <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener"
+                class="btn btn-sm" style="background:#1877f2;"><i class="fab fa-facebook-f"></i> عرض الفيس</a>
+            </div>
+            <div class="nfc-body">
+              <span class="news-cat" style="background:#dc3545;"><i class="fas fa-exclamation-triangle"></i> إعلان
+                هام</span>
+              <h2>تعليمات وقواعد امتحانات الفصل الدراسي والتنبيهات الخاصة بالطلاب</h2>
+              <p>تعلن إدارة شؤون الطلاب بجميع الفرق الدراسية عن ضرورة الالتزام بإحضار إثبات الشخصية (كارنيه الكلية)
+                والدخول للقاعات قبل بدء الامتحان بربع ساعة.
+
+                يُحظر تماماً اصطحاب الهواتف المحمولة أو الأجهزة الإلكترونية داخل لجان الامتحانات. مع أطيب تمنياتنا لجميع
+                أبنائنا الطلاب بالنجاح والتوفيق.</p>
+            </div>
+            <div class="nfc-footer">
+              <div class="nfc-stats">
+                <span><i class="fas fa-thumbs-up"></i> 290 إعجاب</span>
+                <span><i class="fas fa-comment"></i> 114 تعليق</span>
+                <span><i class="fas fa-share"></i> 67 مشاركة</span>
+              </div>
+              <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener"
+                class="read-more">رابط المنشور الأصلي <i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Right: Facebook Live Feed Sidebar -->
+        <div class="fb-sticky">
+          <div style="margin-bottom:20px;">
+            <div class="section-header align-right" style="margin-bottom:16px;">
+              <span class="section-badge fb-badge"><i class="fab fa-facebook-f"></i> مباشر من فيسبوك</span>
+            </div>
+
+            <!-- Facebook Embedded Timeline Widget -->
+            <div class="fb-embed-container" style="padding:0;min-height:720px;">
+              <div class="fb-page" data-href="https://www.facebook.com/pharmacyazharboysassuit" data-tabs="timeline"
+                data-width="" data-height="720" data-small-header="false" data-adapt-container-width="true"
+                data-hide-cover="false" data-show-facepile="true">
+              </div>
+            </div>
+
+            <!-- Facebook CTA Bar -->
+            <div class="fb-cta-bar" style="margin-top:20px;">
+              <div>
+                <p>الصفحة الرسمية على فيسبوك</p>
+                <small>pharmacyazharboysassuit</small>
+              </div>
+              <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener"
+                class="btn btn-outline" style="border-color:rgba(255,255,255,0.8);font-size:13px;padding:8px 18px;">
+                <i class="fab fa-facebook-f"></i> متابعة الآن
+              </a>
+            </div>
+
+            <!-- Facebook Like Box -->
+            <div
+              style="background:#fff;border-radius:var(--radius);padding:16px;margin-top:12px;box-shadow:var(--shadow-sm);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+              <span style="font-size:13px;font-weight:700;color:var(--text-dark);">تابعنا وتفاعل معنا مباشرة:</span>
+              <div class="fb-like" data-href="https://www.facebook.com/pharmacyazharboysassuit" data-width=""
+                data-layout="button_count" data-action="like" data-size="large" data-share="true">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-inner">
+          <p>جميع الحقوق محفوظة &copy; 2026 كلية الصيدلة - جامعة الأزهر - أسيوط</p>
+          <div class="footer-bottom-links"><a href="index.html">الرئيسية</a><a href="contact.html">اتصل بنا</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v19.0"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
