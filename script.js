@@ -102,23 +102,49 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   })();
 
-  // ---- Facebook Feed Fallback Checker ----
+  // ---- Facebook Feed & SDK Error Logger & Fallback Checker ----
+  console.info('%c[Facebook Data Fetcher]: جاري فحص حالة سحب البيانات والمنشورات من فيسبوك...', 'color: #1877f2; font-weight: bold; font-size: 12px;');
+
+  window.addEventListener('error', function (e) {
+    if (e.filename && (e.filename.includes('facebook') || e.filename.includes('fbcdn'))) {
+      console.error('❌ [Facebook SDK Network Error]: خطأ في سحب بيانات فيسبوك من الخادم:', e.message, 'المصدر:', e.filename);
+    }
+  }, true);
+
   setTimeout(function checkFacebookEmbeds() {
-    document.querySelectorAll('.fb-page').forEach(function (fbBox) {
+    const fbBoxes = document.querySelectorAll('.fb-page');
+    if (!fbBoxes.length) return;
+
+    let hasErrors = false;
+    fbBoxes.forEach(function (fbBox, index) {
       const parent = fbBox.parentElement;
-      if (parent && (!fbBox.children.length || fbBox.offsetHeight < 50)) {
-        parent.innerHTML = `
-          <div class="fb-fallback-box">
-            <div class="fb-fallback-icon"><i class="fab fa-facebook-f"></i></div>
-            <h4 class="fb-fallback-title">صفحة كلية الصيدلة الرسمية على فيسبوك</h4>
-            <p class="fb-fallback-desc">تابع أحدث الأخبار، التكريمات، الفعاليات الأكاديمية والأنشطة الطلابية اليومية مباشرة عبر صفحتنا الرسمية على الفيسبوك.</p>
-            <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="btn btn-facebook">
-              <i class="fab fa-facebook-f"></i> الانتقال لصفحة الفيسبوك الرسمية
-            </a>
-          </div>
-        `;
+      const isLoaded = window.FB && fbBox.children.length > 0 && fbBox.offsetHeight > 50;
+
+      if (!isLoaded) {
+        hasErrors = true;
+        console.warn(`⚠️ [Facebook Data Fetch Warning #${index + 1}]: تعذر سحب المنشورات التفاعلية أو تم حظر السكربت بواسطة أداة منع الإعلانات (AdBlocker/Firewall).`);
+        console.error(`❌ [Facebook Embed Error]: العنصر المستهدف (pharmacyazharboysassuit) لم يستجب. جارِ التبديل التلقائي إلى كارت العرض البديل.`);
+
+        if (parent) {
+          parent.innerHTML = `
+            <div class="fb-fallback-box">
+              <div class="fb-fallback-icon"><i class="fab fa-facebook-f"></i></div>
+              <h4 class="fb-fallback-title">صفحة كلية الصيدلة الرسمية على فيسبوك</h4>
+              <p class="fb-fallback-desc">تابع أحدث الأخبار، التكريمات، الفعاليات الأكاديمية والأنشطة الطلابية اليومية مباشرة عبر صفحتنا الرسمية على الفيسبوك.</p>
+              <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="btn btn-facebook">
+                <i class="fab fa-facebook-f"></i> الانتقال لصفحة الفيسبوك الرسمية
+              </a>
+            </div>
+          `;
+        }
+      } else {
+        console.log(`✅ [Facebook Data Fetch Success #${index + 1}]: تم سحب وعرض بيانات الفيسبوك بنجاح.`);
       }
     });
+
+    if (hasErrors) {
+      console.info('💡 [Facebook Debug Note]: لرؤية المنشورات المباشرة دون كارت بديل، يرجى تعطيل أداة AdBlocker أو التأكد من الاتصال بخدمات Meta Facebook.');
+    }
   }, 3500);
 
   const preloader = document.getElementById('preloader');

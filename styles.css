@@ -843,8 +843,9 @@ html[dir="ltr"] .ticker-items {
 
 /* ---- Dean's Message ---- */
 .dean-grid { display: grid; grid-template-columns: 280px 1fr; gap: 50px; align-items: start; }
-.dean-card { background: #fff; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); text-align: center; }
-.dean-avatar { width: 100%; height: 260px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); display: flex; align-items: center; justify-content: center; font-size: 5rem; color: rgba(255,255,255,0.6); }
+.dean-avatar { width: 100%; height: 310px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); display: flex; align-items: center; justify-content: center; font-size: 5rem; color: rgba(255,255,255,0.6); overflow: hidden; }
+.dean-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.3s ease; }
+.dean-avatar:hover img { transform: scale(1.03); }
 .dean-card-info { padding: 20px; }
 .dean-card-info h3 { font-size: 1.05rem; font-weight: 900; color: var(--text-dark); margin-bottom: 5px; }
 .dean-card-info p { font-size: 13px; color: var(--primary); font-weight: 700; }

@@ -1,0 +1,159 @@
+/* ============================================================
+   Pharma Cursor — animated capsule cursor for pharmacy sites
+   Drop this file + pharma-cursor.js into any page. Done.
+   ============================================================ */
+
+html.ph-cursor-active,
+html.ph-cursor-active * {
+  cursor: none !important;
+}
+
+/* ---- main cursor (capsule / pill) ---- */
+.ph-cursor {
+  --x: 50vw;
+  --y: 50vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 14px;
+  border-radius: 7px;
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate(calc(var(--x) - 50%), calc(var(--y) - 50%)) rotate(-45deg);
+  background: linear-gradient(90deg, #ffffff 50%, #0f7a5c 50%);
+  box-shadow:
+    0 0 0 1.5px rgba(15, 51, 43, 0.35),
+    0 3px 10px rgba(15, 51, 43, 0.28);
+  transition: width 0.22s cubic-bezier(.4,0,.2,1),
+              height 0.22s cubic-bezier(.4,0,.2,1),
+              border-radius 0.22s cubic-bezier(.4,0,.2,1),
+              background 0.22s ease,
+              opacity 0.15s ease;
+  will-change: transform;
+}
+
+/* thin capsule seam line */
+.ph-cursor::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(15, 51, 43, 0.15);
+  pointer-events: none;
+}
+
+/* ---- hover state: morphs into a medical cross ring over clickables ---- */
+.ph-cursor.ph-hover {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(15, 122, 92, 0.08);
+  box-shadow:
+    0 0 0 2px #0f7a5c,
+    0 4px 16px rgba(15, 51, 43, 0.25);
+  transform: translate(calc(var(--x) - 50%), calc(var(--y) - 50%)) rotate(0deg);
+}
+.ph-cursor.ph-hover::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 4px;
+  border-radius: 2px;
+  background: #c9483e;
+  transform: translate(-50%, -50%);
+}
+.ph-cursor.ph-hover::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 16px;
+  border-radius: 2px;
+  background: #c9483e;
+  box-shadow: none;
+  transform: translate(-50%, -50%);
+}
+
+/* ---- pressed state ---- */
+.ph-cursor.ph-down {
+  width: 22px;
+  height: 11px;
+}
+.ph-cursor.ph-hover.ph-down {
+  width: 38px;
+  height: 38px;
+}
+
+/* ---- trailing dosage-line particles ---- */
+.ph-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #0f7a5c;
+  pointer-events: none;
+  z-index: 999998;
+  opacity: 0.55;
+  transform: translate(-50%, -50%) scale(1);
+  animation: ph-trail-fade 0.6s ease-out forwards;
+}
+
+@keyframes ph-trail-fade {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+}
+
+/* ---- click burst: little capsules flying outward ---- */
+.ph-burst {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 5px;
+  border-radius: 3px;
+  pointer-events: none;
+  z-index: 999998;
+  background: linear-gradient(90deg, #ffffff 50%, #c9483e 50%);
+  box-shadow: 0 0 0 1px rgba(15, 51, 43, 0.3);
+  opacity: 1;
+  animation: ph-burst-fly 0.55s cubic-bezier(.2,.8,.3,1) forwards;
+}
+
+@keyframes ph-burst-fly {
+  to {
+    transform: translate(var(--ph-dx), var(--ph-dy)) rotate(var(--ph-rot));
+    opacity: 0;
+  }
+}
+
+/* respect reduced motion: keep the cursor, drop the trail/burst flourish */
+@media (prefers-reduced-motion: reduce) {
+  .ph-trail,
+  .ph-burst {
+    display: none;
+  }
+  .ph-cursor {
+    transition: none;
+  }
+}
+
+/* touch devices: never hijack the native cursor */
+@media (hover: none), (pointer: coarse) {
+  html.ph-cursor-active,
+  html.ph-cursor-active * {
+    cursor: auto !important;
+  }
+  .ph-cursor,
+  .ph-trail,
+  .ph-burst {
+    display: none !important;
+  }
+}
