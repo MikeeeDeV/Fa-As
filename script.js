@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!document.getElementById('gt-script')) {
       const s = document.createElement('script');
       s.id = 'gt-script';
-      s.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
       document.head.appendChild(s);
     }
   })();
@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (enBtn) enBtn.classList.add('active');
       });
 
-      // Trigger Google Translate to English
       triggerGoogleTranslate('en');
     } else {
       htmlEl.setAttribute('dir', 'rtl');
@@ -60,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (arBtn) arBtn.classList.add('active');
       });
 
-      // Trigger Google Translate to Arabic / Restore
       triggerGoogleTranslate('ar');
     }
   }
@@ -93,6 +91,36 @@ document.addEventListener('DOMContentLoaded', function () {
   if (savedLang === 'en') {
     setTimeout(() => setLanguage('en'), 400);
   }
+
+  // ---- Continuous Seamless Ticker Marquee ----
+  (function initTicker() {
+    const tickerItems = document.querySelector('.ticker-items');
+    if (tickerItems && !tickerItems.dataset.duplicated) {
+      tickerItems.dataset.duplicated = 'true';
+      // Duplicate content to create 100% continuous loop with 0 gaps
+      tickerItems.innerHTML += tickerItems.innerHTML;
+    }
+  })();
+
+  // ---- Facebook Feed Fallback Checker ----
+  setTimeout(function checkFacebookEmbeds() {
+    document.querySelectorAll('.fb-page').forEach(function (fbBox) {
+      const parent = fbBox.parentElement;
+      if (parent && (!fbBox.children.length || fbBox.offsetHeight < 50)) {
+        parent.innerHTML = `
+          <div class="fb-fallback-box">
+            <div class="fb-fallback-icon"><i class="fab fa-facebook-f"></i></div>
+            <h4 class="fb-fallback-title">صفحة كلية الصيدلة الرسمية على فيسبوك</h4>
+            <p class="fb-fallback-desc">تابع أحدث الأخبار، التكريمات، الفعاليات الأكاديمية والأنشطة الطلابية اليومية مباشرة عبر صفحتنا الرسمية على الفيسبوك.</p>
+            <a href="https://www.facebook.com/pharmacyazharboysassuit" target="_blank" rel="noopener" class="btn btn-facebook">
+              <i class="fab fa-facebook-f"></i> الانتقال لصفحة الفيسبوك الرسمية
+            </a>
+          </div>
+        `;
+      }
+    });
+  }, 3500);
+
   const preloader = document.getElementById('preloader');
   if (preloader) {
     window.addEventListener('load', function () {
@@ -115,23 +143,23 @@ document.addEventListener('DOMContentLoaded', function () {
   const searchResults = document.getElementById('searchResults');
 
   const sitePages = [
-    { title: 'الصفحة الرئيسية', desc: 'كلية الصيدلة جامعة الأزهر أسيوط', url: 'index.html' },
-    { title: 'سجل الإنجازات والتميز 🏆', desc: 'تكريمات الكلية، الجوائز الدولية، وبراءات الاختراع', url: 'achievements.html' },
-    { title: 'عن الكلية وكلمة العميد', desc: 'تاريخ الكلية، الرؤية، والرسالة والاعتماد', url: 'about.html' },
-    { title: 'الكيمياء الصيدلية والتحليلية', desc: 'الأقسام الأكاديمية - الكيمياء', url: 'departments.html#pharmaceutical-chemistry' },
-    { title: 'قسم الصيدلانيات', desc: 'الأقسام الأكاديمية - الصيدلانيات', url: 'departments.html#pharmaceutics' },
-    { title: 'قسم العقاقير للنباتات الطبية', desc: 'الأقسام الأكاديمية - العقاقير', url: 'departments.html#pharmacognosy' },
-    { title: 'قسم الميكروبيولوجيا والمناعة', desc: 'الأقسام الأكاديمية - الميكروبيولوجيا', url: 'departments.html#microbiology' },
-    { title: 'قسم الكيمياء الحيوية', desc: 'الأقسام الأكاديمية - الكيمياء الحيوية', url: 'departments.html#biochemistry' },
-    { title: 'قسم الصيدلة الإكلينيكية', desc: 'الأقسام الأكاديمية - الرعاية الصيدلية', url: 'departments.html#clinical-pharmacy' },
-    { title: 'برنامج بكالوريوس الصيدلة PharmD', desc: 'البرامج الأكاديمية واللائحة', url: 'academic-programs.html#bachelor' },
-    { title: 'برامج الدراسات العليا (ماجستير ودكتوراه)', desc: 'الدراسات العليا والبحوث', url: 'academic-programs.html#postgrad' },
-    { title: 'البحث العلمي والمختبر المركزي', desc: 'المعامل المركزية والنشر العلمي', url: 'research.html' },
-    { title: 'الهيئة التدريسية', desc: 'دليل السادة أعضاء هيئة التدريس', url: 'faculty.html' },
-    { title: 'بوابة الطلاب والجداول', desc: 'الجداول الدراسية، والنتائج، والتدريب الصيفي', url: 'students.html' },
-    { title: 'الأخبار ومنشورات فيسبوك', desc: 'آخر المنشورات والفعاليات من فيسبوك', url: 'news.html' },
-    { title: 'معرض الصور والفيديو', desc: 'ألبومات صور الكلية على فيسبوك', url: 'gallery.html' },
-    { title: 'اتصل بنا والعنوان', desc: 'خريطة الكلية ورقم الهاتف والبريد', url: 'contact.html' }
+    { title: 'الصفحة الرئيسية', desc: 'كلية الصيدلة جامعة الأزهر أسيوط', url: 'index' },
+    { title: 'سجل الإنجازات والتميز 🏆', desc: 'تكريمات الكلية، الجوائز الدولية، وبراءات الاختراع', url: 'achievements' },
+    { title: 'عن الكلية وكلمة العميد', desc: 'تاريخ الكلية، الرؤية، والرسالة والاعتماد', url: 'about' },
+    { title: 'الكيمياء الصيدلية والتحليلية', desc: 'الأقسام الأكاديمية - الكيمياء', url: 'departments#pharmaceutical-chemistry' },
+    { title: 'قسم الصيدلانيات', desc: 'الأقسام الأكاديمية - الصيدلانيات', url: 'departments#pharmaceutics' },
+    { title: 'قسم العقاقير للنباتات الطبية', desc: 'الأقسام الأكاديمية - العقاقير', url: 'departments#pharmacognosy' },
+    { title: 'قسم الميكروبيولوجيا والمناعة', desc: 'الأقسام الأكاديمية - الميكروبيولوجيا', url: 'departments#microbiology' },
+    { title: 'قسم الكيمياء الحيوية', desc: 'الأقسام الأكاديمية - الكيمياء الحيوية', url: 'departments#biochemistry' },
+    { title: 'قسم الصيدلة الإكلينيكية', desc: 'الأقسام الأكاديمية - الرعاية الصيدلية', url: 'departments#clinical-pharmacy' },
+    { title: 'برنامج بكالوريوس الصيدلة PharmD', desc: 'البرامج الأكاديمية واللائحة', url: 'academic-programs#bachelor' },
+    { title: 'برامج الدراسات العليا (ماجستير ودكتوراه)', desc: 'الدراسات العليا والبحوث', url: 'academic-programs#postgrad' },
+    { title: 'البحث العلمي والمختبر المركزي', desc: 'المعامل المركزية والنشر العلمي', url: 'research' },
+    { title: 'الهيئة التدريسية', desc: 'دليل السادة أعضاء هيئة التدريس', url: 'faculty' },
+    { title: 'بوابة الطلاب والجداول', desc: 'الجداول الدراسية، والنتائج، والتدريب الصيفي', url: 'students' },
+    { title: 'الأخبار ومنشورات فيسبوك', desc: 'آخر المنشورات والفعاليات من فيسبوك', url: 'news' },
+    { title: 'معرض الصور والفيديو', desc: 'ألبومات صور الكلية على فيسبوك', url: 'gallery' },
+    { title: 'اتصل بنا والعنوان', desc: 'خريطة الكلية ورقم الهاتف والبريد', url: 'contact' }
   ];
 
   if (searchOverlay) {
@@ -174,12 +202,16 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   }
+
   (function setActiveNav() {
     const path = window.location.pathname;
-    const page = path.split('/').pop().replace('.html', '') || 'index';
+    let page = path.split('/').pop().replace('.html', '').replace('/', '') || 'index';
+    if (page === '') page = 'index';
     document.querySelectorAll('.nav-item[data-page]').forEach(function (item) {
       if (item.dataset.page === page) {
         item.classList.add('active');
+      } else {
+        item.classList.remove('active');
       }
     });
   })();
@@ -190,9 +222,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (hamburger && mainNav) {
     hamburger.addEventListener('click', function () {
-      mainNav.classList.toggle('open');
+      const isOpen = mainNav.classList.toggle('open');
       hamburger.classList.toggle('active');
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
+    hamburger.setAttribute('aria-controls', 'mainNav');
   }
 
   // Mobile: toggle dropdowns on click
@@ -210,6 +244,10 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('click', function (e) {
     if (mainNav && hamburger && !mainNav.contains(e.target) && !hamburger.contains(e.target)) {
       mainNav.classList.remove('open');
+      if (hamburger.classList.contains('active')) {
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
     }
   });
 

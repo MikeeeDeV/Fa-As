@@ -174,7 +174,7 @@ img { max-width: 100%; display: block; }
 .ticker-title {
   background: var(--secondary);
   color: var(--primary-dark);
-  padding: 3px 12px;
+  padding: 4px 14px;
   border-radius: 15px;
   font-weight: 800;
   font-size: 12px;
@@ -183,36 +183,116 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   gap: 6px;
+  z-index: 2;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
 }
 .ticker-content {
   overflow: hidden;
   white-space: nowrap;
   flex: 1;
+  position: relative;
 }
 .ticker-items {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   white-space: nowrap;
-  animation: ticker 25s linear infinite;
+  animation: ticker-marquee 30s linear infinite;
+  will-change: transform;
 }
 .ticker-items:hover {
   animation-play-state: paused;
 }
 .ticker-item {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   margin-left: 35px;
-  color: rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.92);
+  font-size: 13px;
 }
 .ticker-item i {
   color: var(--secondary);
-  margin-left: 6px;
 }
-.ticker-item a:hover {
+.ticker-item a {
   color: var(--secondary);
+  margin-right: 4px;
+  font-weight: 700;
   text-decoration: underline;
 }
-@keyframes ticker {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+.ticker-item a:hover {
+  color: #fff;
+}
+.ticker-badge-fb {
+  background: #1877f2;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 700;
+  margin-left: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+@keyframes ticker-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+html[dir="ltr"] .ticker-items {
+  animation-name: ticker-marquee-ltr;
+}
+@keyframes ticker-marquee-ltr {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
+}
+
+/* Facebook Fallback styling when SDK fails or is blocked */
+.fb-fallback-box {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 30px 20px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #e4e6eb;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 380px;
+}
+.fb-fallback-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--facebook);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 15px rgba(24,119,242,0.3);
+}
+.fb-fallback-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+.fb-fallback-desc {
+  font-size: 13.5px;
+  color: var(--text-light);
+  max-width: 380px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Number Counter Alignment */
+.stat-number, .stat-item div {
+  direction: ltr;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ---- Live Search Modal ---- */
