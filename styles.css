@@ -3557,3 +3557,351 @@ html[dir="ltr"] .ticker-items {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* ============================================================
+   NEW FEATURES — Audio Reader, Progress Bar, Shortcuts, Print
+   ============================================================ */
+
+/* ---- Reading Progress Bar ---- */
+.reading-progress-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary-light));
+  z-index: 99999;
+  transition: width 0.1s linear;
+  border-radius: 0 0 0 2px;
+  box-shadow: 0 0 8px rgba(26, 107, 60, 0.4);
+}
+
+/* ---- Audio Reader removed ---- */
+
+/* ---- Keyboard Shortcuts Popup/Modal ---- */
+.shortcuts-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 74, 41, 0.88);
+  backdrop-filter: blur(6px);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.shortcuts-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.shortcuts-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 32px 28px 24px;
+  max-width: 480px;
+  width: 92%;
+  box-shadow: var(--shadow-lg);
+  animation: shortcutsSlideIn 0.35s ease;
+  position: relative;
+}
+
+@keyframes shortcutsSlideIn {
+  from { transform: translateY(-30px) scale(0.95); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.shortcuts-card .shortcuts-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--border);
+}
+
+.shortcuts-card .shortcuts-header .sc-icon {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.shortcuts-card .shortcuts-header h3 {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--text-dark);
+}
+
+.shortcuts-card .shortcuts-header p {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.shortcuts-close {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: #f0f2f5;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dark);
+  transition: all 0.2s ease;
+  font-size: 0.85rem;
+}
+
+.shortcuts-close:hover {
+  background: #dc3545;
+  color: #fff;
+}
+
+.shortcuts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.shortcut-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: var(--bg-light);
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+
+.shortcut-row:hover {
+  background: #e8f5ec;
+}
+
+.shortcut-row .sc-label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.shortcut-row .sc-label i {
+  color: var(--primary);
+  width: 16px;
+  text-align: center;
+}
+
+.shortcut-row .sc-keys {
+  display: flex;
+  gap: 4px;
+}
+
+.shortcut-row .sc-keys kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 26px;
+  padding: 0 8px;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-bottom: 3px solid #c5c9cf;
+  border-radius: 6px;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.shortcuts-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.shortcuts-footer label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--text-light);
+  cursor: pointer;
+  user-select: none;
+}
+
+.shortcuts-footer label input[type="checkbox"] {
+  accent-color: var(--primary);
+  width: 16px;
+  height: 16px;
+}
+
+.shortcuts-footer .btn-close-shortcuts {
+  padding: 8px 20px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.shortcuts-footer .btn-close-shortcuts:hover {
+  background: var(--primary-dark);
+}
+
+/* Footer shortcuts link */
+.footer-shortcuts-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #888 !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.footer-shortcuts-link:hover {
+  color: var(--secondary) !important;
+}
+
+/* ---- Smart Print Mode ---- */
+@media print {
+  /* Hide non-essential elements */
+  .topbar,
+  .news-ticker-bar,
+  .site-header,
+  .main-nav,
+  .page-hero::before,
+  .hero-circle,
+  .back-to-top,
+  .reading-progress-bar,
+  .shortcuts-overlay,
+  #preloader,
+  .hamburger,
+  .search-modal-overlay,
+  .fb-feed-wrapper,
+  .fb-follow-btn,
+  .fb-col,
+  .fb-sticky,
+  .swiper-button-next,
+  .swiper-button-prev,
+  .swiper-pagination,
+  .footer-top,
+  .footer-bottom,
+  .announce-band,
+  #fb-root,
+  .btn,
+  .more-news-btn,
+  .hero-buttons,
+  .read-more {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    color: #000 !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .container {
+    max-width: 100% !important;
+    padding: 0 15px !important;
+  }
+
+  .section {
+    padding: 20px 0 !important;
+    break-inside: avoid;
+  }
+
+  /* Show print header with college name */
+  body::before {
+    content: 'كلية الصيدلة — جامعة الأزهر — أسيوط';
+    display: block;
+    text-align: center;
+    font-size: 16pt;
+    font-weight: 900;
+    color: #1a6b3c;
+    padding: 15px 0 10px;
+    border-bottom: 3px solid #1a6b3c;
+    margin-bottom: 20px;
+  }
+
+  /* Show URLs after links */
+  a[href^="http"]::after {
+    content: ' (' attr(href) ')';
+    font-size: 9pt;
+    color: #666;
+    font-weight: normal;
+  }
+
+  /* Fix grids for print */
+  .departments-grid,
+  .services-grid,
+  .stats-grid,
+  .faculty-grid,
+  .portal-grid,
+  .news-grid,
+  .mvg-grid,
+  .admin-grid,
+  .community-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .page-hero {
+    background: #f0f8f4 !important;
+    padding: 20px 0 !important;
+    color: #000 !important;
+  }
+
+  .page-hero h1 {
+    color: #1a6b3c !important;
+    text-shadow: none !important;
+    font-size: 18pt !important;
+  }
+
+  .page-hero .hero-lead,
+  .page-hero .breadcrumb,
+  .page-hero-meta span {
+    color: #333 !important;
+  }
+
+  img {
+    max-height: 250px;
+    object-fit: contain;
+  }
+
+  .site-footer {
+    display: none !important;
+  }
+}
+
+/* ---- Responsive adjustments for new features ---- */
+@media (max-width: 768px) {
+  .shortcuts-card {
+    padding: 24px 18px 18px;
+  }
+}

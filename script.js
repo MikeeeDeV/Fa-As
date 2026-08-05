@@ -597,5 +597,220 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  // ============================================================
+  // NEW FEATURES
+  // ============================================================
+
+  // ---- 1. Smart Protocol Routing (file:/// support) ----
+  (function smartProtocolRouting() {
+    if (window.location.protocol !== 'file:') return;
+
+    console.info('%c[Smart Routing]: تم اكتشاف وضع التصفح المحلي (file://) — جاري تحويل الروابط تلقائياً...', 'color: #1a6b3c; font-weight: bold;');
+
+    document.querySelectorAll('a[href]').forEach(function (link) {
+      const href = link.getAttribute('href');
+      if (!href) return;
+      // Skip external links, anchors, javascript, mailto, tel, already .html
+      if (href.startsWith('http') || href.startsWith('#') || href.startsWith('javascript:') ||
+          href.startsWith('mailto:') || href.startsWith('tel:') || href.includes('.html') ||
+          href.includes('.png') || href.includes('.jpg') || href.includes('.jpeg') ||
+          href.includes('.pdf') || href.includes('.xml') || href.includes('.css') ||
+          href.includes('.js') || href === '') return;
+
+      // Handle hash fragments: "about#dean" → "about.html#dean"
+      const hashIndex = href.indexOf('#');
+      if (hashIndex > 0) {
+        const page = href.substring(0, hashIndex);
+        const hash = href.substring(hashIndex);
+        link.setAttribute('href', page + '.html' + hash);
+      } else {
+        link.setAttribute('href', href + '.html');
+      }
+    });
+
+    console.log('✅ [Smart Routing]: تم تحويل الروابط الداخلية بنجاح لدعم التصفح المحلي.');
+  })();
+
+  // ---- 2. Image Fallback Safety ----
+  (function imageFallbackSafety() {
+    const fallbackSrc = 'pharma-as logo.png';
+
+    document.addEventListener('error', function (e) {
+      const img = e.target;
+      if (img.tagName !== 'IMG') return;
+      // Only handle external images to avoid infinite loop
+      if (!img.src.startsWith('http')) return;
+      // Prevent infinite fallback loop
+      if (img.dataset.fallbackApplied) return;
+      img.dataset.fallbackApplied = 'true';
+
+      console.warn('🛡️ [Image Fallback]: صورة خارجية لم تُحمّل → تم استبدالها بلوجو الكلية:', img.src);
+
+      img.src = fallbackSrc;
+      img.alt = 'كلية الصيدلة - جامعة الأزهر - أسيوط';
+      img.style.objectFit = 'contain';
+      img.style.padding = '15px';
+      img.style.background = 'linear-gradient(135deg, #f0f8f4, #e8f5ec)';
+    }, true); // capture phase to catch errors early
+  })();
+
+  // ---- 3. Reading Progress Bar ----
+  (function readingProgressBar() {
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress-bar';
+    progressBar.style.width = '0%';
+    document.body.appendChild(progressBar);
+
+    window.addEventListener('scroll', function () {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight <= 0) return;
+      const progress = Math.min((scrollTop / docHeight) * 100, 100);
+      progressBar.style.width = progress + '%';
+    }, { passive: true });
+  })();
+
+
+  // ---- 5. Keyboard Shortcuts + Popup ----
+  (function keyboardShortcuts() {
+    const STORAGE_KEY = 'pharma_shortcuts_dismissed';
+
+    // Build shortcuts modal HTML
+    const overlayHTML = `
+      <div class="shortcuts-overlay" id="shortcutsOverlay">
+        <div class="shortcuts-card">
+          <button class="shortcuts-close" id="shortcutsClose"><i class="fas fa-times"></i></button>
+          <div class="shortcuts-header">
+            <div class="sc-icon"><i class="fas fa-keyboard"></i></div>
+            <div>
+              <h3>اختصارات لوحة المفاتيح ⌨️</h3>
+              <p>تنقّل بسرعة داخل الموقع</p>
+            </div>
+          </div>
+          <div class="shortcuts-list">
+            <div class="shortcut-row">
+              <span class="sc-label"><i class="fas fa-home"></i> الصفحة الرئيسية</span>
+              <span class="sc-keys"><kbd>Alt</kbd><kbd>H</kbd></span>
+            </div>
+            <div class="shortcut-row">
+              <span class="sc-label"><i class="fas fa-search"></i> البحث السريع</span>
+              <span class="sc-keys"><kbd>Alt</kbd><kbd>S</kbd></span>
+            </div>
+            <div class="shortcut-row">
+              <span class="sc-label"><i class="fas fa-arrow-up"></i> العودة للأعلى</span>
+              <span class="sc-keys"><kbd>Alt</kbd><kbd>T</kbd></span>
+            </div>
+
+            <div class="shortcut-row">
+              <span class="sc-label"><i class="fas fa-times-circle"></i> إغلاق أي نافذة مفتوحة</span>
+              <span class="sc-keys"><kbd>Esc</kbd></span>
+            </div>
+          </div>
+          <div class="shortcuts-footer">
+            <label><input type="checkbox" id="shortcutsDismiss"> لا تعرض هذا مرة أخرى</label>
+            <button class="btn-close-shortcuts" id="shortcutsOk">فهمت ✓</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Inject overlay into DOM
+    document.body.insertAdjacentHTML('beforeend', overlayHTML);
+
+    const overlay = document.getElementById('shortcutsOverlay');
+    const closeBtn = document.getElementById('shortcutsClose');
+    const okBtn = document.getElementById('shortcutsOk');
+    const dismissCheckbox = document.getElementById('shortcutsDismiss');
+
+    function openShortcutsModal() {
+      overlay.classList.add('visible');
+    }
+
+    function closeShortcutsModal() {
+      if (dismissCheckbox && dismissCheckbox.checked) {
+        localStorage.setItem(STORAGE_KEY, 'true');
+      }
+      overlay.classList.remove('visible');
+    }
+
+    // Show on first visit if not dismissed
+    if (!localStorage.getItem(STORAGE_KEY)) {
+      setTimeout(openShortcutsModal, 1500);
+    }
+
+    closeBtn.addEventListener('click', closeShortcutsModal);
+    okBtn.addEventListener('click', closeShortcutsModal);
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeShortcutsModal();
+    });
+
+    // Inject link into footer
+    const footerLinks = document.querySelector('.footer-bottom-links');
+    if (footerLinks) {
+      const shortcutsLink = document.createElement('a');
+      shortcutsLink.href = 'javascript:void(0)';
+      shortcutsLink.className = 'footer-shortcuts-link';
+      shortcutsLink.innerHTML = '<i class="fas fa-keyboard"></i> اختصارات لوحة المفاتيح';
+      shortcutsLink.addEventListener('click', openShortcutsModal);
+      footerLinks.appendChild(shortcutsLink);
+    }
+
+    // ---- 6. Keyboard event listeners ----
+    document.addEventListener('keydown', function (e) {
+      // Ignore if user is typing in an input/textarea
+      const tag = (e.target.tagName || '').toLowerCase();
+      if (tag === 'input' || tag === 'textarea' || tag === 'select' || e.target.isContentEditable) return;
+
+      // Alt + H → Home
+      if (e.altKey && (e.key === 'h' || e.key === 'H' || e.key === 'ا')) {
+        e.preventDefault();
+        const homeHref = window.location.protocol === 'file:' ? 'index.html' : 'index';
+        window.location.href = homeHref;
+      }
+
+      // Alt + S → Search
+      if (e.altKey && (e.key === 's' || e.key === 'S' || e.key === 'س')) {
+        e.preventDefault();
+        const searchModal = document.getElementById('searchModal');
+        const searchInput = document.getElementById('searchInput');
+        if (searchModal) {
+          searchModal.classList.add('active');
+          if (searchInput) searchInput.focus();
+        }
+      }
+
+      // Alt + T → Back to top
+      if (e.altKey && (e.key === 't' || e.key === 'T' || e.key === 'ت')) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+
+
+      // Escape → Close any open overlay/modal
+      if (e.key === 'Escape') {
+        // Close shortcuts modal
+        if (overlay.classList.contains('visible')) {
+          closeShortcutsModal();
+          return;
+        }
+        // Close search modal
+        const searchModal = document.getElementById('searchModal');
+        if (searchModal && searchModal.classList.contains('active')) {
+          searchModal.classList.remove('active');
+          return;
+        }
+
+      }
+
+      // ? → Show shortcuts
+      if (e.key === '?' || (e.shiftKey && e.key === '/')) {
+        e.preventDefault();
+        openShortcutsModal();
+      }
+    });
+  })();
+
   console.log('كلية الصيدلة - جامعة الأزهر - أسيوط | الموقع محمّل بنجاح ✓');
+  console.info('%c🚀 [New Features Loaded]: Smart Routing • Image Fallback • Progress Bar • Keyboard Shortcuts • Print Mode', 'color: #1a6b3c; font-weight: bold; font-size: 11px;');
 });
